@@ -1,3 +1,5 @@
-angular.module('hopKongIonic').controller('HomeCtrl', function($scope){
+angular.module('hopKongIonic')
+
+.controller('HomeCtrl', function($scope){
 
 });
