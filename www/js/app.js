@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'ngResource'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,28 +31,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
   .state('home', {
     url: '/home',
-    views: {
-      'home': {
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
-      }
-    }
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
   })
   .state('map', {
     url: '/map',
-    views: {
-      'map': {
-        templateUrl: 'templates/map.html',
-        controller: 'MapCtrl'
-      }
-    }
+    templateUrl: 'templates/map.html',
+    controller: 'MapCtrl'
   });
 
   $urlRouterProvider.otherwise("/home");
