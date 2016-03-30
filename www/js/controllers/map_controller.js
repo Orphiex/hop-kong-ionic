@@ -1,4 +1,4 @@
-angular.module('starter').controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
+angular.module('hopKongIonic').controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
   var options = {timeout: 10000, enableHighAccuracy: true};
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
