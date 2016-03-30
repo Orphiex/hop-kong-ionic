@@ -1,5 +1,18 @@
 <ion-view view-title="Beers">
   <ion-content class="padding">
+    <a ui-sref="map"><button class="button button-full button-positive">Find Nearest Beer</button></a>
+    <div class="button-bar">
+      <a ui-sref=""><button class="button button-calm">By Country</button></a>
+      <a ui-sref=""><button class="button button-calm">By Style</button></a>
+      <a ui-sref=""><button class="button button-calm">By Location</button></a>
+    </div>
+
+    <div class="button-bar">
+      <a ui-sref=""><button class="button button-calm">By Brewery</button></a>
+      <a ui-sref=""><button class="button button-calm">By Vendor</button></a>
+      <a ui-sref=""><button class="button button-full button-calm">By Beer</button></a>
+    </div>
+
     <div class="list card" ng-repeat="beer in beers">
       <div class="item item-body">
         <div>
