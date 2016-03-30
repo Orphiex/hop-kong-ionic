@@ -38,6 +38,10 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource'])
     url: '/beers',
     templateUrl: 'templates/beers.html',
     controller: 'BeersCtrl'
+  }).state('vendors', {
+    url: '/vendors',
+    templateUrl: 'templates/vendors.html',
+    controller: 'VendorsCtrl'
   }).state('map', {
     url: '/map',
     templateUrl: 'templates/map.html',
