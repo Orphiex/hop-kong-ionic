@@ -28,15 +28,21 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
 
-  $stateProvider
-
   // setup an abstract state for the tabs directive
+  $stateProvider
   .state('home', {
     url: '/home',
     templateUrl: 'templates/home.html',
     controller: 'HomeCtrl'
-  })
-  .state('map', {
+  }).state('beers', {
+    url: '/beers',
+    templateUrl: 'templates/beers.html',
+    controller: 'BeersCtrl'
+  }).state('vendors', {
+    url: '/vendors',
+    templateUrl: 'templates/vendors.html',
+    controller: 'VendorsCtrl'
+  }).state('map', {
     url: '/map',
     templateUrl: 'templates/map.html',
     controller: 'MapCtrl'

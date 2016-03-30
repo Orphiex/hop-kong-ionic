@@ -1,0 +1,13 @@
+<ion-view view-title="Vendors">
+  <ion-content class="padding">
+    <div class="list card" ng-repeat="vendor in vendors">
+      <div class="item item-body">
+        <div>
+          {{vendor.name}}<br>
+          {{vendor.street_address}}<br>
+          {{vendor.phone_number}}
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
