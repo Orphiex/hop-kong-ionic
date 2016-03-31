@@ -17,4 +17,7 @@ angular.module('hopKongIonic')
 }])
 .factory('UserSession', ['$resource', function($resource) {
   return $resource("http://localhost:3000/user/auth/sign_in");
+}])
+.factory('BeersResultsResource', ['$resource', function($resource) {
+  return $resource("http://localhost:3000/api/beers_results.json");
 }]);

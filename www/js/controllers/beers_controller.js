@@ -4,7 +4,7 @@ angular.module('hopKongIonic')
   function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage) {
   // these arrays store the items that have BEEN selected
   if ($localStorage.selectedGroups) {
-    $scope.selectedGroups = $localStorage.selectedGroups;
+    $scope.selectedGroups = $localStorage.selectedGroups; // stores rthe data in local storage for the results page
   } else {
     $scope.selectedGroups = {
       'HK Location': [],
@@ -54,6 +54,7 @@ angular.module('hopKongIonic')
 
   // Beer.pluck(:country).uniq
   // Beer.pluck(:simpstyle).uniq
+
   //QUERIES
   BeerResource.query().$promise.then(function(response){
     $scope.beers = response;
