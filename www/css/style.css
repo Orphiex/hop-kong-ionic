@@ -23,5 +23,6 @@ body {
 }
 
 .list .item.item-accordion .selected {
-  background: blue;
+  background: yellow;
+  font-weight: bold;
 }

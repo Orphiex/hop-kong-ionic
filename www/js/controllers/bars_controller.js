@@ -1,7 +1,7 @@
 angular.module('hopKongIonic')
 
-// still need to add CountryResource and VendorTypeResource
-.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage',
+// still need to add CountryResource
+.controller('BarsCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage',
   function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage) {
   // these arrays store the items that have BEEN selected
   if ($localStorage.selectedGroups) {
@@ -9,7 +9,6 @@ angular.module('hopKongIonic')
   } else {
     $scope.selectedGroups = {
       'HK Location': [],
-      'Vendor Type': [],
       'Beer Country': [],
       'Beer Style': [],
       'Brewery Name': [],
@@ -20,7 +19,6 @@ angular.module('hopKongIonic')
   // these arrays store the items to BE selected
   $scope.groups = {
     'HK Location': [],
-    'Vendor Type': ['Online Store', 'Retail Store', 'Brewery', 'Bar or Restaurant'], // need to update seed data to pull this info
     'Beer Country': ['USA', 'Hong Kong'], // need to update seed data to pull this info
     'Beer Style': [],
     'Brewery Name': [],
@@ -61,12 +59,7 @@ angular.module('hopKongIonic')
     $scope.groups['HK Location'] = response;
   });
 
-  //VendorTypeResource.query().$promise.then(function(response){
-  //  console.log(response);
-  //  $scope.groups['Vendor Type'] = response;
-  //});
-
-  //BeerCountryResource.query().$promise.then(function(response){
+  //CountryResource.query().$promise.then(function(response){
   //  console.log(response);
   //  $scope.groups['Beer Country'] = response;
   //});
