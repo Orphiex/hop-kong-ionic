@@ -21,7 +21,7 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
       StatusBar.styleDefault();
     }
   });
-}).config(function($stateProvider, $urlRouterProvider, $httpProvider, $authProvider) {
+}).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$authProvider', function($stateProvider, $urlRouterProvider, $httpProvider, $authProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -71,8 +71,14 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
 
   $authProvider.configure([
     {
-      user: {
+      default: {
         apiUrl:                  'http://localhost:3000',
+        proxyIf:                 function() { window.isOldIE(); },
+        storage:                 'localStorage'
+      }
+    },
+    {
+      user: {
         tokenValidationPath:     '/user/auth/validate_token',
         signOutUrl:              '/user/auth/sign_out',
         emailRegistrationPath:   '/user/auth',
@@ -81,11 +87,9 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
         passwordResetPath:       '/user/auth/password',
         passwordUpdatePath:      '/user/auth/password',
         emailSignInPath:         '/user/auth/sign_in',
-        storage:                 'localStorage'
       }
     },{
       admin: {
-        apiUrl:                  'http://localhost:3000',
         tokenValidationPath:     '/auth/admin/validate_token',
         signOutUrl:              '/auth/admin/sign_out',
         emailRegistrationPath:   '/auth/admin',
@@ -93,9 +97,8 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
         accountDeletePath:       '/auth/admin',
         passwordResetPath:       '/auth/admin/password',
         passwordUpdatePath:      '/auth/admin/password',
-        emailSignInPath:         '/auth/admin/sign_in',
-        storage:                 'localStorage'
+        emailSignInPath:         '/auth/admin/sign_in'
       }
     }
   ]);
-});
+}]);

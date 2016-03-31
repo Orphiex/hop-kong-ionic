@@ -10,7 +10,7 @@ angular.module('hopKongIonic')
       // handle success response
       console.log(resp);
       // redirect back to root when registration succesfull
-      $location.path('/');
+      $location.path('/settings');
     }).catch(function(resp) {
       // handle error response
       console.log(resp);

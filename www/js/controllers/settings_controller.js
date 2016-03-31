@@ -1,13 +1,20 @@
 angular.module('hopKongIonic')
 
-.controller('SettingsCtrl', ['$scope', function($scope){
+.controller('SettingsCtrl', ['$scope', '$auth', function($scope, $auth){
 
   $scope.logout = function () {
-    $auth.signOut().then(function(resp) {
+    $auth.signOut({config: 'user'}).then(function(resp) {
       console.log(resp);
     }).catch(function(resp) {
       console.log(resp);
     });
   };
 
+  $scope.validate = function () {
+    $auth.validateUser({config: 'user'}).then(function(resp) {
+      console.log(resp);
+    }).catch(function(resp) {
+      console.log(resp);
+    });
+  };
 }]);

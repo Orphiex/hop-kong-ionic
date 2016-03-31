@@ -1,25 +1,21 @@
 angular.module('hopKongIonic')
 
-.controller('LoginCtrl', ['$scope', '$location', 'UserSession', '$ionicPopup', '$rootScope', function($scope, $location, UserSession, $ionicPopup, $rootScope){
+.controller('LoginCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
 
-  $scope.data = {};
+  $scope.loginForm = {};
 
   $scope.login = function() {
-    var user_session = new UserSession({ user: $scope.data });
-    user_session.$save(
-      function(data){
-        window.localStorage['userId'] = data.id;
-        window.localStorage['userName'] = data.name;
-        $location.path('/tab/dash');
-      },
-      function(err){
-        var error = err["data"]["error"] || err.data.join('. ')
-        var confirmPopup = $ionicPopup.alert({
-          title: 'An error occured',
-          template: error
-        });
-      }
-    );
+    console.log($scope.loginForm);
+    $auth.submitLogin($scope.loginForm, {config: 'user'})
+    .then(function(resp) {
+      // handle success response
+      console.log(resp);
+      // redirect back to root when registration succesfull
+      $location.path('/settings');
+    }).catch(function(resp) {
+      // handle error response
+      console.log(resp);
+    });
   };
 
 }]);
