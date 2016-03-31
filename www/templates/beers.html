@@ -1,19 +1,23 @@
 <ion-view view-title="Beers">
   <ion-content class="padding">
     <a ui-sref="map"><button class="button button-full button-positive">Find Nearest Beer</button></a>
-    <div class="button-bar">
-      <a ui-sref=""><button class="button button-calm">By Country</button></a>
-      <a ui-sref=""><button class="button button-calm">By Style</button></a>
-      <a ui-sref=""><button class="button button-calm">By Location</button></a>
-    </div>
 
-    <div class="button-bar">
-      <a ui-sref=""><button class="button button-calm">By Brewery</button></a>
-      <a ui-sref=""><button class="button button-calm">By Vendor</button></a>
-      <a ui-sref=""><button class="button button-calm">By Beer</button></a>
-    </div>
+    <ion-list>
+      <div ng-repeat="(name, items) in groups">
+        <ion-item class="item-stable" ng-click="toggleGroup(name)" ng-class="{active: isGroupShown(name)}">
+          <i class="icon" ng-class="isGroupShown(name) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          {{name | capitalize:'first'}}
+        </ion-item>
+        <div class="item-accordion item" ng-show="isGroupShown(name)">
+          <span ng-repeat="item in items" ng-click="selectItem(name, item)" ng-class="{selected: isItemSelected(name, item)}">
+            {{item}}
+          </span>
+        </div>
+      </div>
+    </ion-list>
 
-    <div class="list card" ng-repeat="beer in beers">
+<!--     <div class="list card" ng-repeat="beer in beers">
       <div class="item item-body">
         <div>
           <img src="{{beer.country_image}}" alt="beer.country">
@@ -22,37 +26,6 @@
           {{beer.abv}}%
         </div>
       </div>
-    </div>
+    </div> -->
   </ion-content>
 </ion-view>
-
-  <body ng-controller="AccordionCtrl">
-
-    <ion-header-bar class="bar-positive">
-      <h1 class="title">Accordion List</h1>
-    </ion-header-bar>
-
-    <ion-content>
-
-      <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item class="item-stable"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-            Group {{group.name}}
-          </ion-item>
-          <div class="item-accordion item"
-               ng-show="isGroupShown(group)">
-            <span ng-repeat="item in group.items">
-              {{item}}
-            </span>
-          </div>
-        </div>
-      </ion-list>
-
-    </ion-content>
-
-  </body>
-</html>
