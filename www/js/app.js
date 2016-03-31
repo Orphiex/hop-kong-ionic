@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-auth', 'puigcerber.capitalize'])
+angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-auth', 'puigcerber.capitalize', 'ngStorage'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,6 +38,11 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     url: '/beers',
     templateUrl: 'templates/beers.html',
     controller: 'BeersCtrl'
+  }).state('beers-results', {
+    url: '/results',
+    templateUrl: 'templates/beers-results.html',
+    controller: 'BeersResultsCtrl',
+    cache: false
   }).state('vendors', {
     url: '/vendors',
     templateUrl: 'templates/vendors.html',
