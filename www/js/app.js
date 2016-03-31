@@ -72,7 +72,7 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
   $authProvider.configure([
     {
       user: {
-        apiUrl:                  location.origin,
+        apiUrl:                  'http://localhost:3000',
         tokenValidationPath:     '/user/auth/validate_token',
         signOutUrl:              '/user/auth/sign_out',
         emailRegistrationPath:   '/user/auth',
@@ -85,7 +85,7 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
       }
     },{
       admin: {
-        apiUrl:                  location.origin,
+        apiUrl:                  'http://localhost:3000',
         tokenValidationPath:     '/auth/admin/validate_token',
         signOutUrl:              '/auth/admin/sign_out',
         emailRegistrationPath:   '/auth/admin',
