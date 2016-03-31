@@ -21,12 +21,14 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
       StatusBar.styleDefault();
     }
   });
-}).config(function($stateProvider, $urlRouterProvider) {
+}).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$authProvider', function($stateProvider, $urlRouterProvider, $httpProvider, $authProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+
+  $httpProvider.defaults.withCredentials = true;
 
   // setup an abstract state for the tabs directive
   $stateProvider
@@ -34,6 +36,18 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     url: '/home',
     templateUrl: 'templates/home.html',
     controller: 'HomeCtrl'
+  }).state('settings', {
+    url: '/settings',
+    templateUrl: 'templates/settings.html',
+    controller: 'SettingsCtrl'
+  }).state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'SignupCtrl'
+  }).state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
   }).state('beers', {
     url: '/beers',
     templateUrl: 'templates/beers.html',
@@ -55,4 +69,36 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
 
   $urlRouterProvider.otherwise("/home");
 
-});
+  $authProvider.configure([
+    {
+      default: {
+        apiUrl:                  'http://localhost:3000',
+        proxyIf:                 function() { window.isOldIE(); },
+        storage:                 'localStorage'
+      }
+    },
+    {
+      user: {
+        tokenValidationPath:     '/user/auth/validate_token',
+        signOutUrl:              '/user/auth/sign_out',
+        emailRegistrationPath:   '/user/auth',
+        accountUpdatePath:       '/user/auth',
+        accountDeletePath:       '/user/auth',
+        passwordResetPath:       '/user/auth/password',
+        passwordUpdatePath:      '/user/auth/password',
+        emailSignInPath:         '/user/auth/sign_in',
+      }
+    },{
+      admin: {
+        tokenValidationPath:     '/auth/admin/validate_token',
+        signOutUrl:              '/auth/admin/sign_out',
+        emailRegistrationPath:   '/auth/admin',
+        accountUpdatePath:       '/auth/admin',
+        accountDeletePath:       '/auth/admin',
+        passwordResetPath:       '/auth/admin/password',
+        passwordUpdatePath:      '/auth/admin/password',
+        emailSignInPath:         '/auth/admin/sign_in'
+      }
+    }
+  ]);
+}]);
