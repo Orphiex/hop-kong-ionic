@@ -1,6 +1,11 @@
 angular.module('hopKongIonic')
 
-.controller('BeersResultsCtrl', ['$scope', 'BeerResource', '$localStorage', function($scope, BeerResource, $localStorage){
+.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, $localStorage) {
   console.log($localStorage.selectedGroups);
-  // use resource to send the data
-}]);
+  BeersResultsResource.query().$promise.then(function (response) {
+    $scope.results = response;
+  });
+  // use resource to obtain the data
+});
+
+// ['$scope', 'BeerResource', '$localStorage']
