@@ -66,11 +66,13 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     templateUrl: 'templates/bars-results.html',
     controller: 'BarsResultsCtrl',
     cache: false
-  }).state('vendors', {
-    url: '/vendors',
-    templateUrl: 'templates/vendors.html',
-    controller: 'VendorsCtrl'
-  }).state('map', {
+  })
+  // .state('vendors', {
+  //   url: '/vendors',
+  //   templateUrl: 'templates/vendors.html',
+  //   controller: 'VendorsCtrl'
+  // })
+  .state('map', {
     url: '/map',
     templateUrl: 'templates/map.html',
     controller: 'MapCtrl'
