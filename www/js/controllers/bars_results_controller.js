@@ -5,7 +5,7 @@ angular.module('hopKongIonic')
 
   $http({
     method: 'GET',
-    url: "http://localhost:3000/api/bars_results.json",
+    url: "http://localhost:3000/api/bars_results.json", // previously had http://localhost:3000
     paramSerializer: '$httpParamSerializerJQLike',
     params: $localStorage.selectedGroups
   }).then(function (resp) {
