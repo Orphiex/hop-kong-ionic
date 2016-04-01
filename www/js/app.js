@@ -53,9 +53,18 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     templateUrl: 'templates/beers.html',
     controller: 'BeersCtrl'
   }).state('beers-results', {
-    url: '/results',
+    url: '/beers/results', // change to beers results?
     templateUrl: 'templates/beers-results.html',
     controller: 'BeersResultsCtrl',
+    cache: false
+  }).state('bars', {
+    url: '/bars',
+    templateUrl: 'templates/bars.html',
+    controller: 'BarsCtrl'
+  }).state('bars-results', {
+    url: '/bars/results', // change to bars results?
+    templateUrl: 'templates/bars-results.html',
+    controller: 'BarsResultsCtrl',
     cache: false
   }).state('vendors', {
     url: '/vendors',

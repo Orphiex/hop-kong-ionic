@@ -1,0 +1,35 @@
+<ion-view view-title="Bars">
+  <ion-content class="padding">
+    <button ui-sref="map" class="button button-full button-positive">Find Nearest Bar</button>
+
+    <ion-list>
+      <div ng-repeat="(name, obj) in groups">
+        <ion-item class="item-stable" ng-click="toggleGroup(name)" ng-class="{active: isGroupShown(name)}">
+          <i class="icon" ng-class="isGroupShown(name) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          {{name | capitalize:'first'}}
+        </ion-item>
+        <div ng-if="obj.listStyle == 'Inline'"
+             class="item-accordion item"
+             ng-show="isGroupShown(name)">
+          <span ng-repeat="item in obj.list"
+                ng-click="selectItem(name, item)"
+                ng-class="{selected: isItemSelected(name, item)}">
+            {{item}}
+          </span>
+        </div>
+        <ion-item ng-if="obj.listStyle == 'Block'"
+                  class="item-accordion"
+                  ng-show="isGroupShown(name)"
+                  ng-repeat="item in obj.list"
+                  ng-click="selectItem(name, item)"
+                  ng-class="{selected: isItemSelected(name, item)}">
+          {{item}}
+        </ion-item>
+      </div>
+        <button ui-sref="bars-results" ui-sref-opts="{reload:true}" class="button button-balanced">Search</button>
+        <button class="center button button-assertive">Reset</button>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

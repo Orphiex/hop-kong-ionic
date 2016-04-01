@@ -1,4 +1,4 @@
-<ion-view view-title="Beers Results">
+<ion-view view-title="Bars Results">
   <ion-content class="padding">
     <div class="list card" ng-repeat="vendor in vendors">
       <div class="item item-body">
@@ -6,8 +6,8 @@
           {{vendor.name}}<br>
           {{vendor.street_address}}<br>
           {{vendor.district}}<br>
-          <button class="button-small button button-balanced">More details</button>
-          <button class="button-small button button-assertive">Bookmark</button>
+          <button class="button-small button button-balanced">More details</button></a>
+          <button ui-sref="vendor-details" ui-sref-opts="{reload:true}" class="button-small button button-assertive">Bookmark</button>
         </div>
       </div>
     </div>
