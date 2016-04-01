@@ -1,5 +1,6 @@
 angular.module('hopKongIonic')
 
+
 .factory('BeerResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beers.json");
 }])
@@ -20,4 +21,10 @@ angular.module('hopKongIonic')
 }])
 .factory('BeersResultsResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beers_results.json");
+}])
+.factory('LoggedIn', ['$http', function($http){
+  return {
+    loggedIn: false,
+    userType: null
+  };
 }]);
