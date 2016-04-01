@@ -1,7 +1,10 @@
 angular.module('hopKongIonic')
 
-.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage',
-  function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage) {
+.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn) {
+
+  $scope.loggedIn = LoggedIn;
+
+
   // these arrays store the items that have BEEN selected
   if ($localStorage.selectedGroups) {
     $scope.selectedGroups = $localStorage.selectedGroups; // stores rthe data in local storage for the results page
