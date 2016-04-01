@@ -19,12 +19,30 @@ angular.module('hopKongIonic')
 
   // these arrays store the items to BE selected
   $scope.groups = {
-    'HK Location': [],
-    'Vendor Type': ['Online Store', 'Retail Store', 'Brewery', 'Bar or Restaurant'], // need to update seed data to pull this info
-    'Beer Country': ['USA', 'Hong Kong'], // need to update seed data to pull this info
-    'Beer Style': [],
-    'Brewery Name': [],
-    'Beer Name': []
+    'HK Location': {
+      list: [],
+      listStyle: 'Block'
+    },
+    'Vendor Type': {
+      list: ['Online Store', 'Retail Store', 'Brewery', 'Bar or Restaurant'],  // need to update seed data to pull this info
+      listStyle: 'Block'
+    },
+    'Beer Country': {
+      list: ['USA', 'Hong Kong'], // need to update seed data to pull this info
+      listStyle: 'Inline'
+    },
+    'Beer Style': {
+      list: [],
+      listStyle: 'Block'
+    },
+    'Brewery Name': {
+      list: [],
+      listStyle: 'Block'
+    },
+    'Beer Name': {
+      list: [],
+      listStyle: 'Block'
+    }
   };
 
   // shows or hides group (eg country, style, location)
@@ -58,7 +76,7 @@ angular.module('hopKongIonic')
 
   //QUERIES
   LocationResource.query().$promise.then(function(response){
-    $scope.groups['HK Location'] = response;
+    $scope.groups['HK Location'].list = response;
   });
 
   //VendorTypeResource.query().$promise.then(function(response){
@@ -72,15 +90,15 @@ angular.module('hopKongIonic')
   //});
 
   StyleResource.query().$promise.then(function(response){
-    $scope.groups['Beer Style'] = response;
+    $scope.groups['Beer Style'].list = response;
   });
 
   BreweryResource.query().$promise.then(function(response){
-    $scope.groups['Brewery Name'] = response;
+    $scope.groups['Brewery Name'].list = response;
   });
 
   BeerResource.query().$promise.then(function(response){
     $scope.beers = response;
-    $scope.groups['Beer Name'] = $scope.beers.map(function(beer) { return beer.name; });  // this is obtaining the beer names
+    $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });  // this is obtaining the beer names
   });
 }]);

@@ -1,23 +1,36 @@
 <ion-view view-title="Beers">
   <ion-content class="padding">
-    <a ui-sref="map"><button class="button button-full button-calm">Find Nearest Beer</button></a>
+    <button ui-sref="map" class="button button-full button-calm">Find Nearest Beer</button>
 
     <ion-list>
-      <div ng-repeat="(name, items) in groups">
+      <div ng-repeat="(name, obj) in groups">
         <ion-item class="item-stable" ng-click="toggleGroup(name)" ng-class="{active: isGroupShown(name)}">
           <i class="icon" ng-class="isGroupShown(name) ? 'ion-minus' : 'ion-plus'"></i>
           &nbsp;
           {{name | capitalize:'first'}}
         </ion-item>
-        <div class="item-accordion item" ng-show="isGroupShown(name)">
-          <span ng-repeat="item in items" ng-click="selectItem(name, item)" ng-class="{selected: isItemSelected(name, item)}">
+        <div ng-if="obj.listStyle == 'Inline'"
+             class="item-accordion item"
+             ng-show="isGroupShown(name)">
+          <span ng-repeat="item in obj.list"
+                ng-click="selectItem(name, item)"
+                ng-class="{selected: isItemSelected(name, item)}">
             {{item}}
           </span>
         </div>
+        <ion-item ng-if="obj.listStyle == 'Block'"
+                  class="item-accordion"
+                  ng-show="isGroupShown(name)"
+                  ng-repeat="item in obj.list"
+                  ng-click="selectItem(name, item)"
+                  ng-class="{selected: isItemSelected(name, item)}">
+          {{item}}
+        </ion-item>
       </div>
-      <a ui-sref="beers-results" ui-sref-opts="{reload:true}"><button class="button button-balanced">Search</button></a>
+      <button ui-sref="beers-results" ui-sref-opts="{reload:true}" class="button button-balanced">Search</button>
       <button class="button button-assertive">Reset</button>
     </ion-list>
 
   </ion-content>
 </ion-view>
+

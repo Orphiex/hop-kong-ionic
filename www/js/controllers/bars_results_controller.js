@@ -5,7 +5,8 @@ angular.module('hopKongIonic')
 
   $http({
     method: 'GET',
-    url: "http://localhost:3000/api/bars_results.json", // previously had http://localhost:3000
+    // update for Heroku
+    url: "http://localhost:3000/api/bars_results.json",
     paramSerializer: '$httpParamSerializerJQLike',
     params: $localStorage.selectedGroups
   }).then(function (resp) {
@@ -14,12 +15,6 @@ angular.module('hopKongIonic')
   }, function (resp) {
     console.log(resp);
   });
-
-  // BarsResultsResource.query().$promise.then(function (response) {
-  //   $scope.results = response;
-  //   console.log(response);
-  // });
-  // use resource to obtain the data
 });
 
 // ['$scope', 'BeerResource', '$localStorage']
