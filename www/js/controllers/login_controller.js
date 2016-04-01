@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('LoginCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
+.controller('LoginCtrl', ['$scope', '$auth', '$location', 'LoggedIn', function($scope, $auth, $location, LoggedIn){
 
   $scope.loginForm = {};
 
@@ -10,11 +10,16 @@ angular.module('hopKongIonic')
     .then(function(resp) {
       // handle success response
       console.log(resp);
+      LoggedIn.loggedIn = true;
+      LoggedIn.userType = resp;
+      console.log(LoggedIn);
+
       // redirect back to root when registration succesfull
-      $location.path('/settings');
+      $location.path('/home');
     }).catch(function(resp) {
       // handle error response
       console.log(resp);
+      $scope.loggedIn = false;
     });
   };
 

@@ -1,8 +1,8 @@
 <ion-view view-title="Settings">
   <ion-content>
-    <button class="button button-full button-balanced" ui-sref="login">Log In</button>
-    <button class="button button-full button-balanced" ui-sref="signup">Sign Up</button>
-    <button class="button button-full button-assertive" ng-click="logout()">Logout</button>
+    <button class="button button-full button-balanced" ng-hide="loggedIn.loggedIn" ui-sref="login">Log In</button>
+    <button class="button button-full button-balanced" ng-hide="loggedIn.loggedIn" ui-sref="signup">Sign Up</button>
+    <button class="button button-full button-assertive" ng-show="loggedIn.loggedIn" ng-click="logout()">Logout</button>
     <button class="button button-full button-energized" ng-click="validate()">Validate</button>
   </ion-content>
 </ion-view>
