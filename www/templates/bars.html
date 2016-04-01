@@ -1,6 +1,6 @@
 <ion-view view-title="Bars">
   <ion-content class="padding">
-    <a ui-sref="map"><button class="button button-full button-positive">Find Nearest Bar</button></a>
+    <button ui-sref="map" class="button button-full button-positive">Find Nearest Bar</button>
 
     <ion-list>
       <div ng-repeat="(name, obj) in groups">
@@ -27,7 +27,7 @@
           {{item}}
         </ion-item>
       </div>
-        <a ui-sref="bars-results" ui-sref-opts="{reload:true}"><button class="button button-balanced">Search</button></a>
+        <button ui-sref="bars-results" ui-sref-opts="{reload:true}" class="button button-balanced">Search</button>
         <button class="center button button-assertive">Reset</button>
     </ion-list>
 
