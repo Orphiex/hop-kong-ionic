@@ -6,8 +6,9 @@
           {{vendor.name}}<br>
           {{vendor.street_address}}<br>
           {{vendor.district}}<br>
-          <button class="button-small button button-balanced">More details</button></a>
-          <button ui-sref="vendor-details" ui-sref-opts="{reload:true}" class="button-small button button-assertive">Bookmark</button>
+          <button ui-sref="vendor-details({vendor_id: vendor.id})" ui-sref-opts="{reload:true}" class="button-small button button-balanced">More details</button></a>
+          <!-- Need authentication here -->
+          <button class="button-small button button-assertive">Bookmark</button>
         </div>
       </div>
     </div>
