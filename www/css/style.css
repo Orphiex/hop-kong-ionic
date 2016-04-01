@@ -22,7 +22,7 @@ body {
 /*   display: block !important; */
 }
 
-.list .item.item-accordion .selected {
+.list .item.item-accordion .selected, .list .item.item-accordion.selected{
   background: yellow;
   font-weight: bold;
 }

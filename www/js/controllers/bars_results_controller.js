@@ -1,10 +1,24 @@
 angular.module('hopKongIonic')
 
-.controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage) {
+.controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http) {
   console.log($localStorage.selectedGroups);
-  BarsResultsResource.query().$promise.then(function (response) {
-    $scope.results = response;
+
+  $http({
+    method: 'GET',
+    url: "http://localhost:3000/api/bars_results.json",
+    paramSerializer: '$httpParamSerializerJQLike',
+    params: $localStorage.selectedGroups
+  }).then(function (resp) {
+    console.log(resp);
+    $scope.vendors = resp.data;
+  }, function (resp) {
+    console.log(resp);
   });
+
+  // BarsResultsResource.query().$promise.then(function (response) {
+  //   $scope.results = response;
+  //   console.log(response);
+  // });
   // use resource to obtain the data
 });
 

@@ -1,8 +1,13 @@
 <ion-view view-title="Beers Results">
   <ion-content class="padding">
-    <h1>{{results}}</h1>
-    <h1>results</h1>
-    <h1>results</h1>
-    <h1>results</h1>
+    <div class="list card" ng-repeat="vendor in vendors">
+      <div class="item item-body">
+        <div>
+          {{vendor.name}}<br>
+          {{vendor.street_address}}<br>
+          {{vendor.phone_number}}
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
