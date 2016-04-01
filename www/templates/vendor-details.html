@@ -9,13 +9,13 @@
           {{vendor.district}}<br>
           <!--logic to hide website if it doesn't exist -->
           <!-- on-click="window.open('{{vendor.website_url}}', '_system', 'location=yes'); return false;" -->
-          <a class="icon" href="{{vendor.website_url}}" on-click="window.open('{{vendor.website_url}}', '_blank', 'location=yes'); return false;"><img src="http://i.imgur.com/PYR4Gbx.png" alt="website"></a>
+          <a class="icon" ng-click="toBrowser(vendor.website_url)"><img src="http://i.imgur.com/PYR4Gbx.png" alt="website"></a>
            <!--logic to hide if facebook doesn't exist -->
-          <a class="icon" href="{{vendor.facebook_url}}" on-click="window.open('{{vendor.facebook_url}}', '_blank', 'location=yes'); return false;"><img src="http://i.imgur.com/6zsRPYd.png" alt="facebook"></a>
+          <a class="icon" ng-click="toBrowser(vendor.facebook_url)"><img src="http://i.imgur.com/6zsRPYd.png" alt="facebook"></a>
            <!--logic to hide if twitter doesn't exist -->
-          <a class="icon" href="{{vendor.twitter_url}}" on-click="window.open('{{vendor.twitter_url}}', '_blank', 'location=yes'); return false;"><img src="http://i.imgur.com/RcPZbjs.png" alt="twitter"></a>
+          <a class="icon" ng-click="toBrowser(vendor.twitter_url)"><img src="http://i.imgur.com/RcPZbjs.png" alt="twitter"></a>
            <!--logic to hide if instagram doesn't exist -->
-          <a class="icon" href="{{vendor.instagram_url}}" on-click="window.open('{{vendor.instagram_url}}', '_blank', 'location=yes'); return false;"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
+          <a class="icon" ng-click="toBrowser(vendor.instagram_url)"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
           <!-- add authentication -->
           <button class="button button-assertive">Bookmark</button>
         </div>
