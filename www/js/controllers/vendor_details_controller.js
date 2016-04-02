@@ -11,6 +11,7 @@ angular.module('hopKongIonic')
     $window.open(encodeURI(link), '_system');
   };
 
+  // code below hides bookmark if user is authenticated
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
     console.log("Logged In");

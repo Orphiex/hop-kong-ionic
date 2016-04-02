@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http) {
+.controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http, $auth) {
   console.log($localStorage.selectedGroups);
 
   $http({
@@ -14,6 +14,15 @@ angular.module('hopKongIonic')
     $scope.vendors = resp.data;
   }, function (resp) {
     console.log(resp);
+  });
+
+  // code below hides bookmark if user is authenticated
+  $auth.validateUser().then(function(resp){
+    $scope.user = resp;
+    console.log("Logged In");
+  }).catch(function(resp){
+    $scope.user = null;
+    console.log("Not Logged In");
   });
 });
 

@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, $localStorage, $http) {
+.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, $localStorage, $http, $auth) {
   console.log($localStorage.selectedGroups);
 
   $http({
@@ -16,10 +16,13 @@ angular.module('hopKongIonic')
     console.log(resp);
   });
 
-  // BarsResultsResource.query().$promise.then(function (response) {
-  //   $scope.results = response;
-  //   console.log(response);
-  // });
-  // use resource to obtain the data
+  $auth.validateUser().then(function(resp){
+    $scope.user = resp;
+    console.log("Logged In");
+  }).catch(function(resp){
+    $scope.user = null;
+    console.log("Not Logged In");
+  });
 });
+
 // ['$scope', 'BeerResource', '$localStorage']
