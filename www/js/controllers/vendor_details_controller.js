@@ -7,11 +7,12 @@ angular.module('hopKongIonic')
     console.log(response);
   });
 
+  // opens up social media icons in different window
   $scope.toBrowser = function (link) {
     $window.open(encodeURI(link), '_system');
   };
 
-  // code below hides bookmark if user is authenticated
+  // hides bookmark if user authenticated
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
     console.log("Logged In");
@@ -19,4 +20,6 @@ angular.module('hopKongIonic')
     $scope.user = null;
     console.log("Not Logged In");
   });
+
+
 }]);

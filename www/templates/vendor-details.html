@@ -1,22 +1,28 @@
-<ion-view view-title="Vendor Details">
+<ion-view view-title="Vendor Details" id="vendor-details">
   <ion-content class="padding">
     <div class="list card">
       <div class="item item-body">
         <div>
-          <img src="{{vendor.image_url}}"><br>
           {{vendor.name}}<br>
-          {{vendor.street_address}}<br>
+          <img src="{{vendor.image_url}}"><br>
+          Address: {{vendor.street_address}},
           {{vendor.district}}<br>
-          <!--logic to hide website if it doesn't exist -->
+          Vendor Type: TO BE ADDED<br>
+          Phone: {{vendor.phone_number}}<br>
+          Email: {{vendor.email}}<br>
+
           <!-- on-click="window.open('{{vendor.website_url}}', '_system', 'location=yes'); return false;" -->
-          <a class="icon" ng-click="toBrowser(vendor.website_url)"><img src="http://i.imgur.com/PYR4Gbx.png" alt="website"></a>
+          <div>
+          <!--hides icon if no link a -->
+          <a class="icon" ng-show="vendor.website_url !== ''" ng-click="toBrowser(vendor.website_url)"><img src="http://i.imgur.com/PYR4Gbx.png" alt="website"></a>
            <!--logic to hide if facebook doesn't exist -->
-          <a class="icon" ng-click="toBrowser(vendor.facebook_url)"><img src="http://i.imgur.com/6zsRPYd.png" alt="facebook"></a>
+          <a class="icon" ng-show="vendor.facebook_url !== ''" ng-click="toBrowser(vendor.facebook_url)"><img src="http://i.imgur.com/6zsRPYd.png" alt="facebook"></a>
            <!--logic to hide if twitter doesn't exist -->
-          <a class="icon" ng-click="toBrowser(vendor.twitter_url)"><img src="http://i.imgur.com/RcPZbjs.png" alt="twitter"></a>
+          <a class="icon" ng-show="vendor.twitter_url !== ''" ng-click="toBrowser(vendor.twitter_url)"><img src="http://i.imgur.com/RcPZbjs.png" alt="twitter"></a>
            <!--logic to hide if instagram doesn't exist -->
-          <a class="icon" ng-click="toBrowser(vendor.instagram_url)"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
+          <a class="icon" ng-show="vendor.instagram_url !== ''" ng-click="toBrowser(vendor.instagram_url)"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
           <!-- add authentication -->
+          </div>
           <button ng-show="user" class="button-small button button-assertive">RememBEER me</button>
           <button ng-hide="user" class="button-small button button-assertive">Login to save</button>
         </div>

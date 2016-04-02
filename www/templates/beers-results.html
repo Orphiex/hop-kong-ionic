@@ -3,8 +3,9 @@
     <div class="list card" ng-repeat="vendor in vendors">
       <div class="item item-body">
         <div>
-          {{vendor.name}}<br>
-          {{vendor.street_address}}<br>
+          Name: {{vendor.name}}<br>
+          Vendor Type: TBC
+          Address{{vendor.street_address}}<br>
           {{vendor.district}}<br>
           <button ui-sref="vendor-details({vendor_id: vendor.id})" ui-sref-opts="{reload:true}" class="button-small button button-balanced">More details</button></a>
           <!-- Need authentication here -->
