@@ -70,19 +70,25 @@ angular.module('hopKongIonic')
     // Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
-      // $scope.results.foreach(addMarker);
+      $scope.results.forEach(addMarker);
 
-      // function addMarker(location){
+      addMarker({
+        latitude: userLat,
+        longitude: userLong,
+        name: "You Are Here."
+      });
+
+      function addMarker(location){
         // Applies new marker
         var marker = new google.maps.Marker({
           map: $scope.map,
           animation: google.maps.Animation.DROP,
-          position: /*new google.maps.LatLng(location.latitude, location.longitude) ||*/ userLocation
+          position: new google.maps.LatLng(location.latitude, location.longitude)/* || userLocation*/
         });
 
         // Adds an info window to the marker
         var infoWindow = new google.maps.InfoWindow({
-          content: /*location.name ||*/ "You are here."
+          content: location.name/* || "You are here."*/
         });
 
         // Adds an event listener that causes the info window to appear and disappear on click of marker
@@ -92,7 +98,7 @@ angular.module('hopKongIonic')
 
         // loc = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
         // bounds.extend(loc);
-      // }
+      }
     });
 
     // $scope.map.fitBounds(bounds);

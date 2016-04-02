@@ -1,5 +1,15 @@
 <ion-view view-title="Map">
   <ion-content>
     <div id="map" data-tap-disabled="true"></div>
+    <div class="list card" ng-repeat="result in results">
+      <div class="item item-body">
+        <div>
+          {{result.name}}<br>
+          {{result.street_address}}<br>
+          {{result.district}}<br>
+          {{result.distance}}
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
