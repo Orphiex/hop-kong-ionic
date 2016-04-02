@@ -3,7 +3,12 @@ angular.module('hopKongIonic').controller('MapCtrl', function($scope, $state, $c
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var userLat  = position.coords.latitude;
+    var userLong = position.coords.longitude;
+
+    var latLng = new google.maps.LatLng(userLat, userLong);
+
+    console.log(userLat, userLong);
 
     var mapOptions = {
       center: latLng,

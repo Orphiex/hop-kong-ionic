@@ -33,5 +33,8 @@ angular.module('hopKongIonic')
 }])
 .factory('VendorTypeResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/vendor_types.json");
+}])
+.factory('AllBarsResource', ['$resource', function($resource) {
+  return $resource("http://localhost:3000/api/all_bars.json");
 }]);
 
