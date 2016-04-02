@@ -80,6 +80,10 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     url: '/all_bars',
     templateUrl: 'templates/all_bars.html',
     controller: 'AllBarsCtrl'
+  }).state('barcode', {
+    url: '/barcode',
+    templateUrl: 'templates/barcode.html',
+    controller: 'BarcodeCtrl'
   });
 
   $urlRouterProvider.otherwise("/home");
