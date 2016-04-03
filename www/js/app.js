@@ -80,6 +80,14 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     url: '/map',
     templateUrl: 'templates/map.html',
     controller: 'MapCtrl'
+  }).state('all_bars', {
+    url: '/all_bars',
+    templateUrl: 'templates/all_bars.html',
+    controller: 'AllBarsCtrl'
+  }).state('barcode', {
+    url: '/barcode',
+    templateUrl: 'templates/barcode.html',
+    controller: 'BarcodeCtrl'
   });
 
 

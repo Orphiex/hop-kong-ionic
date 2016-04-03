@@ -36,6 +36,12 @@ angular.module('hopKongIonic')
 }])
 .factory('VendorTypeResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/vendor_types.json");
+}])
+.factory('AllBarsResource', ['$resource', function($resource) {
+  return $resource("http://localhost:3000/api/all_bars.json");
+}])
+.factory('BarcodeResource', ['$resource', function($resource) {
+  return $resource("http://localhost:3000/api/barcode.json");
 }]);
 
 // also need to update localhost in bars_results_controller and beers_results_controller
