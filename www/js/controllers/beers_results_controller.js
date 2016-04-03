@@ -1,7 +1,10 @@
 angular.module('hopKongIonic')
 
-.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, $localStorage, $http, $auth) {
+.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, $localStorage, $http, $auth, LoggedIn) {
   console.log($localStorage.selectedGroups);
+
+  $scope.loggedIn = LoggedIn;
+  console.log($scope.loggedIn);
 
   $http({
     method: 'GET',
