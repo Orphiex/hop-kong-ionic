@@ -1,4 +1,4 @@
-<ion-view view-title="Beers">
+<ion-view view-title="Beers" id="beers">
   <ion-content class="padding">
     <button ui-sref="map" class="button button-full button-calm">Find Nearest Beer</button>
 
@@ -27,8 +27,10 @@
           {{item}}
         </ion-item>
       </div>
-      <button ui-sref="beers-results" ui-sref-opts="{reload:true}" class="button button-balanced">Search</button>
-      <button class="button button-assertive">Reset</button>
+      <div class="beers-buttons">
+        <button ui-sref="beers-results" ui-sref-opts="{reload:true}" class="button button-balanced">Submit</button>
+        <button class="button button-assertive">Reset</button>
+      <div>
     </ion-list>
 
   </ion-content>

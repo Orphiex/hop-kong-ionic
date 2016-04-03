@@ -24,12 +24,12 @@ angular.module('hopKongIonic')
       listStyle: 'Block'
     },
     'Vendor Type': {
-      list: ['Online Store', 'Retail Store', 'Brewery', 'Bar or Restaurant'],  // need to update seed data to pull this info
+      list: ['Bar/Restaurant', 'Brewery', 'Online Store', 'Retail Store'],  // need to update seed data to pull this info
       listStyle: 'Block'
     },
     'Beer Country': {
-      list: ['USA', 'Hong Kong'], // need to update seed data to pull this info
-      listStyle: 'Inline'
+      list: ['Hong Kong','USA'], // need to update seed data to pull this info
+      listStyle: 'Block'
     },
     'Beer Style': {
       list: [],

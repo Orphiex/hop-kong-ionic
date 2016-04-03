@@ -1,14 +1,28 @@
-<ion-view view-title="Bars Results">
+<ion-view view-title="Bars Results" id="bars-results">
   <ion-content class="padding">
     <div class="list card" ng-repeat="vendor in vendors">
       <div class="item item-body">
         <div>
-          Name: {{vendor.name}}<br>
-          Address: {{vendor.street_address}},
+          <strong>Name:</strong>  {{vendor.name}}<br>
+          <strong>Address:</strong> {{vendor.street_address}},
           {{vendor.district}}<br>
-          <button ui-sref="vendor-details({vendor_id: vendor.id})" ui-sref-opts="{reload:true}" class="button-small button button-balanced">More details</button></a>
-          <!-- Need authentication here -->
-          <button ng-show="user" class="button-small button button-assertive">Bookmark</button>
+          <div class="row">
+            <div class="col">
+              <button ui-sref="vendor-details({vendor_id: vendor.id})"        ui-sref-opts="{reload:true}"
+                      class="button-small button button-balanced">More details
+              </button>
+            </div>
+            <div class="col">
+              <button ng-show="user"
+                      class="button-small button button-assertive">Bookmark
+              </button>
+            </div>
+            <div class="col">
+              <button ng-hide="user"
+                      class="button-small button button-assertive">Login to save
+              </button>
+             </div>
+          </div>
         </div>
       </div>
     </div>
