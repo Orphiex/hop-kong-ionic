@@ -6,24 +6,43 @@ body {
 /*
  * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
  */
+
+ /* Accordion on bars.html and beers.html*/
+#bars {
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+}
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
   padding-bottom: 0;
   transition: 0.09s all linear;
+  background: black;
+  color: white
 }
-
 .list .item.item-accordion.ng-hide {
   line-height: 0px;
 }
-
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
 /*   display: block !important; */
 }
+.list .item.item-accordion .selected, .list .item.item-accordion.selected {
+  background-color: yellow;
+  font-weight: bold;
+  color: black
+}
+.list .item-stable.item.ng-binding {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
 
-.list .item.item-accordion .selected, .list .item.item-accordion.selected{
-  background: yellow;
+/* bars.html */
+#bars #nearest-bar-button {
+  border-radius: 5px;
   font-weight: bold;
 }
 
@@ -43,4 +62,55 @@ body {
   position: relative;
   /*top: 50%;*/
   /*transform: translateY(-50%);*/
+}
+
+#bars .bars-buttons {
+  text-align: center;
+}
+
+/* beers.html */
+#beers .beers-buttons {
+  text-align: center;
+}
+
+/* beers-results.html */
+#beers-results .item-body {
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+}
+#beers-results .item-body #vendor-image {
+
+}
+
+/* bars-results.html */
+
+#bars-results .item-body {
+  background-color: black;
+  color: white;
+}
+#bars-results .item-body #vendor-image {
+
+}
+
+/* vendor-details.html */
+#vendor-details .item-body {
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+
+#vendor-details .item-body #vendor-name {
+  font-size: 40px;
+}
+
+#vendor-details .item-body #vendor-name {
+  font-size: 40px;
+}
+
+#vendor-details .item-body #vendor-image img {
+  height: 200px;
+  width: 200px;
+  border: 3px solid white;
+  border-radius: 5px;
 }

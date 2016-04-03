@@ -23,8 +23,8 @@ angular.module('hopKongIonic')
       listStyle: 'Block'
     },
     'Beer Country': {
-      list: ['USA', 'Hong Kong'], // need to update seed data to pull this info
-      listStyle: 'Inline'
+      list: ['Hong Kong', 'USA'], // need to update seed data to pull this info
+      listStyle: 'Block'
     },
     'Beer Style': {
       list: [],
@@ -40,7 +40,7 @@ angular.module('hopKongIonic')
     }
   };
 
-  // shows or hides group (eg country, style, location)
+  // displays groups (eg country, style, location)
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
@@ -48,7 +48,7 @@ angular.module('hopKongIonic')
       $scope.shownGroup = group;
     }
   };
-  //
+  // shows or hides data
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
   };
