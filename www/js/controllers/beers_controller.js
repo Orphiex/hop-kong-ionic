@@ -1,8 +1,9 @@
 angular.module('hopKongIonic')
 
-// still need to add CountryResource and VendorTypeResource
-.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage',
-  function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage) {
+.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn) {
+
+  $scope.loggedIn = LoggedIn;
+
   // these arrays store the items that have BEEN selected
   if ($localStorage.selectedGroups) {
     $scope.selectedGroups = $localStorage.selectedGroups; // stores the data in local storage for the results page

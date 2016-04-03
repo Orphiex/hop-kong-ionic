@@ -15,16 +15,8 @@ angular.module('hopKongIonic')
   $scope.validate = function () {
     $auth.validateUser({config: 'user'}).then(function(resp) {
       console.log(resp);
-      console.log(LoggedIn);
-      console.log(LoggedIn.loggedIn);
-      console.log($scope.loggedIn);
-      console.log($scope.loggedIn.loggedIn);
     }).catch(function(resp) {
       console.log(resp);
-      console.log(LoggedIn);
-      console.log(LoggedIn.loggedIn);
-      console.log($scope.loggedIn);
-      console.log($scope.loggedIn.loggedIn);
     });
   };
 }]);
