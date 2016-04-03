@@ -1,4 +1,4 @@
-angular.module('hopKongIonic')
+  angular.module('hopKongIonic')
 
 .controller('VendorsCtrl', ['$scope', 'VendorResource', 'LoggedIn', function($scope, VendorResource, LoggedIn) {
 

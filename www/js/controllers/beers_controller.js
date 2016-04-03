@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn) {
+.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', 'VendorTypeResource', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn, VendorTypeResource) {
 
   $scope.loggedIn = LoggedIn;
 
@@ -25,7 +25,7 @@ angular.module('hopKongIonic')
       listStyle: 'Block'
     },
     'Vendor Type': {
-      list: ['Bar/Restaurant', 'Brewery', 'Online Store', 'Retail Store'],  // need to update seed data to pull this info
+      list: [],  // need to update seed data to pull this info
       listStyle: 'Block'
     },
     'Beer Country': {
@@ -80,10 +80,10 @@ angular.module('hopKongIonic')
     $scope.groups['HK Location'].list = response;
   });
 
-  //VendorTypeResource.query().$promise.then(function(response){
-  //  console.log(response);
-  //  $scope.groups['Vendor Type'] = response;
-  //});
+  VendorTypeResource.query().$promise.then(function(response){
+    console.log(response);
+    $scope.groups['Vendor Type'].list = response;
+  });
 
   //BeerCountryResource.query().$promise.then(function(response){
   //  console.log(response);

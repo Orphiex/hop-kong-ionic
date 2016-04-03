@@ -69,6 +69,10 @@ body {
 }
 
 /* beers.html */
+#beers #nearest-beer-button {
+  border-radius: 5px;
+  font-weight: bold;
+}
 #beers .beers-buttons {
   text-align: center;
 }
@@ -84,7 +88,6 @@ body {
 }
 
 /* bars-results.html */
-
 #bars-results .item-body {
   background-color: black;
   color: white;
@@ -94,6 +97,7 @@ body {
 }
 
 /* vendor-details.html */
+
 #vendor-details .item-body {
   background-color: black;
   text-align: center;
