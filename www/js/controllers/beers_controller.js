@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn) {
+.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', 'VendorTypeResource', 'CountryResource', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn, VendorTypeResource, CountryResource) {
 
   // passes data on login status
   $scope.loggedIn = LoggedIn;
@@ -19,18 +19,18 @@ angular.module('hopKongIonic')
     };
   }
 
-  // these arrays store the items to BE selected
+  // these arrays store the items to BE selected from the backend
   $scope.groups = {
     'HK Location': {
       list: [],
       listStyle: 'Block'
     },
     'Vendor Type': {
-      list: ['Bar/Restaurant', 'Brewery', 'Online Store', 'Retail Store'],  // need to update seed data to pull this info
+      list: [],
       listStyle: 'Block'
     },
     'Beer Country': {
-      list: ['Hong Kong','USA'], // need to update seed data to pull this info
+      list: [],
       listStyle: 'Block'
     },
     'Beer Style': {
@@ -72,35 +72,41 @@ angular.module('hopKongIonic')
     return $scope.selectedGroups[name].indexOf(item) != -1;
   };
 
-
   // Beer.pluck(:country).uniq
   // Beer.pluck(:simpstyle).uniq
 
   //QUERIES
+  // this obtains unique locations (eg Central, Wan Chai)
   LocationResource.query().$promise.then(function(response){
     $scope.groups['HK Location'].list = response;
   });
 
-  //VendorTypeResource.query().$promise.then(function(response){
-  //  console.log(response);
-  //  $scope.groups['Vendor Type'] = response;
-  //});
+  // this obtains unique vendor types (eg Bar/Restaurant, Online Retail)
+  VendorTypeResource.query().$promise.then(function(response){
+    // console.log(response);
+    $scope.groups['Vendor Type'].list = response;
+  });
 
-  //BeerCountryResource.query().$promise.then(function(response){
-  //  console.log(response);
-  //  $scope.groups['Beer Country'] = response;
-  //});
+  // this obtains unique countries for the beers (eg Hong Kong, USA)
+  CountryResource.query().$promise.then(function(response){
+    //console.log(response);
+    $scope.groups['Beer Country'].list = response;
+  });
 
+  // this obtains the unique beer style names (eg Lager, IPA)
   StyleResource.query().$promise.then(function(response){
     $scope.groups['Beer Style'].list = response;
   });
 
+  // this obtains unique beer brewery names (eg Anchor, Kona)
   BreweryResource.query().$promise.then(function(response){
     $scope.groups['Brewery Name'].list = response;
   });
 
+  // this obtains all the beer names
   BeerResource.query().$promise.then(function(response){
+    console.log(response);
     $scope.beers = response;
-    $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });  // this is obtaining the beer names
+    $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
   });
 }]);
