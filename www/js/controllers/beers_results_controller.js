@@ -1,10 +1,7 @@
 angular.module('hopKongIonic')
 
-.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, $localStorage, $http, $auth, LoggedIn) {
+.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, LoggedIn) {
   console.log($localStorage.selectedGroups);
-
-  $scope.loggedIn = LoggedIn;
-  console.log($scope.loggedIn);
 
   $http({
     method: 'GET',
@@ -19,14 +16,65 @@ angular.module('hopKongIonic')
     console.log(resp);
   });
 
-  // code below hides bookmark if user is authenticated
+  // code below hides bookmark if user is not authenticated
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
+    $scope.loggedIn = resp.signedIn;
+    console.log($scope.user.id);
     console.log("Logged In");
+    var data = {user_id: $scope.user.id};
+    getBookmarks(data);
   }).catch(function(resp){
     $scope.user = null;
     console.log("Not Logged In");
   });
+
+  function getBookmarks(data){
+    $http({
+      method: 'GET',
+      url: "http://localhost:3000/api/beer_bookmarks",
+      params: data
+    }).then(function (resp) {
+      console.log(resp.data);
+      $scope.vendors = resp.data;
+    }, function (resp) {
+      console.log(resp);
+    });
+  }
+
+  $scope.addBookmark = function(beer_id){
+    var data = {user_id: $scope.user.id, beer_id: beer_id};
+    $http({
+      method: 'POST',
+      url: "http://localhost:3000/api/beer_bookmarks",
+      params: data
+    }).then(function(resp){
+      var data = {user_id: $scope.user.id};
+      getBookmarks(data);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
+
+  $scope.removeBookmark = function(id){
+    $http({
+      method: 'DELETE',
+      url: "http://localhost:3000/api/beer_bookmarks/"+id,
+    }).then(function(resp){
+      var data = {user_id: $scope.user.id};
+      getBookmarks(data);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
+
+    // BeerBookmarksResource.query().$promise.then(function(response){
+    //   $scope.bookmarks = response;
+    //   console.log(response);
+    // });
+
 });
+
+
 
 // ['$scope', 'BeerResource', '$localStorage']

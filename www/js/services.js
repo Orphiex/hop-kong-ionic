@@ -42,6 +42,9 @@ angular.module('hopKongIonic')
 }])
 .factory('BarcodeResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/barcode.json");
+}])
+.factory('BeerBookmarksResource', ['$resource', function($resource) {
+  return $resource("http://localhost:3000/api/beer_bookmarks.json");
 }]);
 
 // also need to update localhost in bars_results_controller and beers_results_controller

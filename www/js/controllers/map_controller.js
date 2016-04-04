@@ -85,6 +85,7 @@ angular.module('hopKongIonic')
 
       function addMarker(location){
         // Applies new marker
+        console.log(location);
         var marker = new google.maps.Marker({
           map: $scope.map,
           animation: google.maps.Animation.DROP,
@@ -92,9 +93,17 @@ angular.module('hopKongIonic')
           icon: location.icon
         });
 
+        var contentString = '<div class="content">'+
+        '<div class="siteNotice"></div>'+
+        '<h4>' + location.name + '</h4>'+
+        '<p>' + location.street_address + '</p>'+
+        '<p>' + location.district + '</p>'+
+        '<button ui-sref="vendor-details({vendor_id: location.id})" class="button-small button button-balanced">More details</button>'+
+        '</div>';
+
         // Adds an info window to the marker
         var infoWindow = new google.maps.InfoWindow({
-          content: location.name/* || "You are here."*/
+          content: contentString/* || "You are here."*/
         });
 
         // Adds an event listener that causes the info window to appear and disappear on click of marker

@@ -1,8 +1,11 @@
 angular.module('hopKongIonic')
 
 .controller('SignupCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
+
+
   $scope.registrationForm = {};
 
+  // executes signup function on click
   $scope.signup = function () {
     console.log($scope.registrationForm);
     $auth.submitRegistration($scope.registrationForm, {config: 'user'})
