@@ -1,6 +1,8 @@
 angular.module('hopKongIonic')
 
 .controller('HomeCtrl', ['$scope', '$auth', 'LoggedIn', function($scope, $auth, LoggedIn){
+
+  // passes data on login status
   $scope.loggedIn = LoggedIn;
   console.log($scope.loggedIn);
 

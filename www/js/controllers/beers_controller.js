@@ -2,6 +2,7 @@ angular.module('hopKongIonic')
 
 .controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', 'VendorTypeResource', 'CountryResource', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn, VendorTypeResource, CountryResource) {
 
+  // passes data on login status
   $scope.loggedIn = LoggedIn;
 
   // these arrays store the items that have BEEN selected

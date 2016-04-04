@@ -10,6 +10,7 @@ angular.module('hopKongIonic')
     });
   };
 
+  // passes data on login status
   $scope.loggedIn = LoggedIn;
 
   $scope.validate = function () {

@@ -2,7 +2,7 @@ angular.module('hopKongIonic')
 
 .controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource) {
   // Adds a time delay
-  var options = {timeout: 10000, enableHighAccuracy: true};
+  var options = {timeout: 5000, enableHighAccuracy: true};
 
   $scope.results = [];
 
@@ -72,23 +72,38 @@ angular.module('hopKongIonic')
 
       $scope.results.forEach(addMarker);
 
+      // ({
+      //   icon: "https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2"
+      // })
+
       addMarker({
         latitude: userLat,
         longitude: userLong,
-        name: "You Are Here."
+        name: "You Are Here.",
+        icon: "https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2"
       });
 
       function addMarker(location){
         // Applies new marker
+        console.log(location);
         var marker = new google.maps.Marker({
           map: $scope.map,
           animation: google.maps.Animation.DROP,
-          position: new google.maps.LatLng(location.latitude, location.longitude)/* || userLocation*/
+          position: new google.maps.LatLng(location.latitude, location.longitude),/* || userLocation*/
+          icon: location.icon
         });
+
+        var contentString = '<div class="content">'+
+        '<div class="siteNotice"></div>'+
+        '<h4>' + location.name + '</h4>'+
+        '<p>' + location.street_address + '</p>'+
+        '<p>' + location.district + '</p>'+
+        '<button ui-sref="vendor-details({vendor_id: location.id})" class="button-small button button-balanced">More details</button>'+
+        '</div>';
 
         // Adds an info window to the marker
         var infoWindow = new google.maps.InfoWindow({
-          content: location.name/* || "You are here."*/
+          content: contentString/* || "You are here."*/
         });
 
         // Adds an event listener that causes the info window to appear and disappear on click of marker
