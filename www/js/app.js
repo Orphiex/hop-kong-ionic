@@ -67,11 +67,6 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     controller: 'BarsResultsCtrl',
     cache: false
   })
-  //  .state('vendors', {
-  //  url: '/vendors',
-  //  templateUrl: 'templates/vendors.html',
-  //  controller: 'VendorsCtrl'
-  // })
   .state('vendor-details', {
     url: '/vendors/:vendor_id/details',
     templateUrl: 'templates/vendor-details.html',
@@ -80,10 +75,6 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     url: '/map',
     templateUrl: 'templates/map.html',
     controller: 'MapCtrl'
-  }).state('all_bars', {
-    url: '/all_bars',
-    templateUrl: 'templates/all_bars.html',
-    controller: 'AllBarsCtrl'
   }).state('barcode', {
     url: '/barcode',
     templateUrl: 'templates/barcode.html',
