@@ -3,26 +3,18 @@
     <div class="list card" ng-repeat="vendor in vendors">
       <div class="item item-body">
         <div>
-          <strong>Name:</strong>  {{vendor.name}}<br>
-          <strong>Address:</strong> {{vendor.street_address}},
-          {{vendor.district}}<br>
-          <div class="row">
-            <div class="col">
-              <button ui-sref="vendor-details({vendor_id: vendor.id})"        ui-sref-opts="{reload:true}"
-                      class="button-small button button-balanced">More details
-              </button>
-            </div>
-            <div class="col">
-              <button ng-show="user"
-                      class="button-small button button-assertive">Bookmark
-              </button>
-            </div>
-            <div class="col">
-              <button ng-hide="user"
-                      class="button-small button button-assertive">Login to save
-              </button>
-             </div>
-          </div>
+          <a class="item item-thumbnail-left" ui-sref="vendor-details({vendor_id: vendor.id})">
+          <img src="{{vendor.image_url}}">
+          <h2>{{vendor.name}}</h2>
+          <p>{{vendor.district}}</p>
+          </a>
+           <button ng-show="user"
+                  class="button-small button button-assertive">Bookmark
+          </button>
+          <button ng-hide="user"
+                  class="button-small button button-assertive">Login to save
+          </button>
+
         </div>
       </div>
     </div>

@@ -65,6 +65,12 @@ angular.module('hopKongIonic')
     return $scope.selectedGroups[name].indexOf(item) != -1;
   };
 
+  // reset button
+  $scope.deselectAll = function(name, item) {
+    console.log("hello");
+    $scope.selectedGroups[name] = null;
+  };
+
 
   // Beer.pluck(:country).uniq
   // Beer.pluck(:simpstyle).uniq

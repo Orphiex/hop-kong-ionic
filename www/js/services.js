@@ -4,9 +4,6 @@ angular.module('hopKongIonic')
 .factory('BeerResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beers.json"); // need to update for Heroku but cannot just remove http://localhost:3000
 }])
-.factory('VendorResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/vendors.json"); // need to update for Heroku but cannot just remove http://localhost:3000
-}])
 .factory('StyleResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beer_styles.json"); // need to update for Heroku but cannot just remove http://localhost:3000
 }])
