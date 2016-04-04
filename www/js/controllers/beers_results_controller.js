@@ -2,19 +2,36 @@ angular.module('hopKongIonic')
 
 .controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, LoggedIn) {
   console.log($localStorage.selectedGroups);
+  console.log($localStorage.quickSearch);
 
-  $http({
-    method: 'GET',
-    // update for Heroku
-    url: "http://localhost:3000/api/beers_results.json",
-    paramSerializer: '$httpParamSerializerJQLike',
-    params: $localStorage.selectedGroups
-  }).then(function (resp) {
-    console.log(resp);
-    $scope.vendors = resp.data;
-  }, function (resp) {
-    console.log(resp);
-  });
+  if ($localStorage.quickSearch == undefined){
+    $http({
+      method: 'GET',
+      // update for Heroku
+      url: "http://localhost:3000/api/beers_results.json",
+      paramSerializer: '$httpParamSerializerJQLike',
+      params: $localStorage.selectedGroups
+    }).then(function (resp) {
+      console.log(resp);
+      $scope.vendors = resp.data;
+    }, function (resp) {
+      console.log(resp);
+    });
+  } else {
+    var data = $localStorage.quickSearch;
+    $http({
+      method: 'GET',
+      // update for Heroku
+      url: "http://localhost:3000/api/beers_quicksearch.json",
+      // paramSerializer: '$httpParamSerializerJQLike',
+      params: data
+    }).then(function (resp) {
+      console.log(resp);
+      $scope.vendors = resp.data;
+    }, function (resp) {
+      console.log(resp);
+    });
+  }
 
   // code below hides bookmark if user is not authenticated
   $auth.validateUser().then(function(resp){
