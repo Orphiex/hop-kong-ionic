@@ -23,13 +23,13 @@ angular.module('hopKongIonic')
     console.log($scope.user.id);
     console.log("Logged In");
     var data = {user_id: $scope.user.id};
-    getBookmarks(data);
+    getBeerBookmarks(data);
   }).catch(function(resp){
     $scope.user = null;
     console.log("Not Logged In");
   });
 
-  function getBookmarks(data){
+  function getBeerBookmarks(data){
     $http({
       method: 'GET',
       url: "http://localhost:3000/api/beer_bookmarks",
@@ -42,7 +42,7 @@ angular.module('hopKongIonic')
     });
   }
 
-  $scope.addBookmark = function(beer_id){
+  $scope.addBeerBookmark = function(beer_id){
     var data = {user_id: $scope.user.id, beer_id: beer_id};
     $http({
       method: 'POST',
@@ -56,7 +56,7 @@ angular.module('hopKongIonic')
     });
   };
 
-  $scope.removeBookmark = function(id){
+  $scope.removeBeerBookmark = function(id){
     $http({
       method: 'DELETE',
       url: "http://localhost:3000/api/beer_bookmarks/"+id,
