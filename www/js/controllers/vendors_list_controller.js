@@ -8,6 +8,7 @@ angular.module('hopKongIonic')
     params: {beer_id: $stateParams.beer_id}
   }).then(function(resp){
     console.log(resp);
+    $scope.vendors = resp.data;
   }, function(resp){
     console.log(resp);
   });
