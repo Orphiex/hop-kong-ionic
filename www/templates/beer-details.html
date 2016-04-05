@@ -4,26 +4,58 @@
       <div class="item item-body">
         <div>
           <span id="beer-name"> {{beer.name}} </span><br>
-          <span id="beer-image"><img src="{{beer.image_url}}"></span><br>
+          <span id="beer-image">
+            <img src="{{beer.brewery_image}}">
+          </span><br>
           Style: {{beer.simpstyle}}<br>
-          ABV: {{beer.abv}}<br><br>
-
+          ABV: {{beer.abv}}%<br>
+          <img src={{beer.country_image}}>
           Brewery: {{beer.brewery}}<br>
           <!-- on-click="window.open('{{vendor.website_url}}', '_system', 'location=yes'); return false;" -->
           <div class="row">
           <!--hides icon if no link a -->
-          <a class="icon col" ng-show="vendor.website_url !== ''" ng-click="toBrowser(vendor.website_url)"><img src="http://i.imgur.com/PYR4Gbx.png" alt="website"></a>
+          <a class="icon col"
+             ng-show="vendor.website_url !== ''"
+             ng-click="toBrowser(vendor.website_url)">
+             <img src="http://i.imgur.com/PYR4Gbx.png"
+                  alt="website">
+          </a>
            <!--logic to hide if facebook doesn't exist -->
-          <a class="icon col" ng-show="vendor.facebook_url !== ''" ng-click="toBrowser(vendor.facebook_url)"><img src="http://i.imgur.com/6zsRPYd.png" alt="facebook"></a>
+          <a class="icon col"
+             ng-show="vendor.facebook_url !== ''"
+             ng-click="toBrowser(vendor.facebook_url)">
+             <img src="http://i.imgur.com/6zsRPYd.png"
+                  alt="facebook">
+          </a>
            <!--logic to hide if twitter doesn't exist -->
-          <a class="icon col" ng-show="vendor.twitter_url !== ''" ng-click="toBrowser(vendor.twitter_url)"><img src="http://i.imgur.com/RcPZbjs.png" alt="twitter"></a>
+          <a class="icon col"
+             ng-show="vendor.twitter_url !== ''"
+             ng-click="toBrowser(vendor.twitter_url)">
+             <img src="http://i.imgur.com/RcPZbjs.png"
+                  alt="twitter">
+          </a>
            <!--logic to hide if instagram doesn't exist -->
-          <a class="icon col" ng-show="vendor.instagram_url !== ''" ng-click="toBrowser(vendor.instagram_url)"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
+          <a class="icon col"
+             ng-show="vendor.instagram_url !== ''"
+             ng-click="toBrowser(vendor.instagram_url)">
+             <img src="http://i.imgur.com/TPn5AyI.png"
+                  alt="instagram">
+          </a>
           <!-- add authentication -->
           </div>
-          <button ui-sref="vendors-list({beer_id: beer.id})" ui-sref-opts="{reload:true}" class="button-small button button-energized">Show Vendors</button>
-          <button ng-show="user" class="button-small button button-assertive">RememBEER me</button>
-          <button ng-hide="user" ui-sref="settings" class="button-small button button-assertive">Login to save</button>
+          <button ui-sref="vendors-list({beer_id: beer.id})"
+                  ui-sref-opts="{reload:true}"
+                  class="button-small button button-energized">
+                  Show Vendors
+          </button>
+          <button ng-show="user"
+                  class="button-small button button-assertive">RememBEER me
+          </button>
+          <button ng-hide="user"
+                  ui-sref="settings"
+                  class="button-small button button-assertive">
+                  Login to save
+          </button>
         </div>
       </div>
     </div>

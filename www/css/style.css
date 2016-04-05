@@ -38,6 +38,11 @@ img .hop-kong {
   background-color: black;
 }
 
+.map-image {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
  /* Accordion on bars.html and beers.html*/
 
 .list .item.item-accordion {
@@ -81,11 +86,7 @@ img .hop-kong {
 #bars .bars-buttons {
   text-align: center;
 }
-#bars-results .item.item-thumbnail-left{
-  background-color: black;
-  color: white;
-  border: 0;
-}
+
 
 /* bars-results.html */
 #bars-results .item-body {
@@ -93,12 +94,13 @@ img .hop-kong {
   color: white;
 }
 
-#bars-results img {
-  border: 2px solid white;
+.beers-results-image {
+  border: 1px solid black;
   border-radius: 5px;
 }
 
-
+#bars-results img {
+}
 /* beers.html */
 #beers {
   background-color: black;
@@ -124,8 +126,7 @@ img .hop-kong {
 }
 
 /* vendor-details.html */
-#vendor-details
-{
+#vendor-details {
   background-color: black;
   color: white;
   opacity: 0.8;
@@ -135,16 +136,31 @@ img .hop-kong {
   text-align: center;
   color: white;
 }
-
 #vendor-details .item-body #vendor-name {
   font-size: 40px;
 }
-
-#vendor-details .item-body #vendor-name {
-  font-size: 40px;
-}
-
 #vendor-details .item-body #vendor-image img {
+  height: 200px;
+  width: 200px;
+  border: 3px solid white;
+  border-radius: 5px;
+}
+
+/* beer-details.html */
+#beer-details {
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+}
+#beer-details .item-body {
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+#beer-details .item-body #beer-name {
+  font-size: 40px;
+}
+#beer-details .item-body #beer-image img {
   height: 200px;
   width: 200px;
   border: 3px solid white;
