@@ -16,8 +16,6 @@
       <button ui-sref="beers-results" class="button button-small button-outline button-positive" ng-click="quickSearch(searchValue)">Submit</button>
     </div>
 
-    <br />
-
     <ion-list>
       <div ng-repeat="(name, obj) in groups">
         <ion-item class="item-stable" ng-click="toggleGroup(name)" ng-class="{active: isGroupShown(name)}">
@@ -48,6 +46,8 @@
         <button class="button button-assertive">Reset</button>
       <div>
     </ion-list>
+
+    <button class="button button-outline button-calm" ng-click="scanBarcode()">Scan Barcode</button>
 
   </ion-content>
 </ion-view>

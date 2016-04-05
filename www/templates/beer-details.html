@@ -5,10 +5,10 @@
         <div>
           <span id="beer-name"> {{beer.name}} </span><br>
           <span id="beer-image"><img src="{{beer.image_url}}"></span><br>
-          Simplified Style: {{beer.simpstyle}}<br>
-          ABV: {{beer.abv}}<br>
-          Brewery:<br>
-          Email:<br>
+          Style: {{beer.simpstyle}}<br>
+          ABV: {{beer.abv}}<br><br>
+
+          Brewery: {{beer.brewery}}<br>
           <!-- on-click="window.open('{{vendor.website_url}}', '_system', 'location=yes'); return false;" -->
           <div class="row">
           <!--hides icon if no link a -->
@@ -21,6 +21,7 @@
           <a class="icon col" ng-show="vendor.instagram_url !== ''" ng-click="toBrowser(vendor.instagram_url)"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
           <!-- add authentication -->
           </div>
+          <button ui-sref="vendors-list" class="button-small button button-energized">Show Vendors</button>
           <button ng-show="user" class="button-small button button-assertive">RememBEER me</button>
           <button ng-hide="user" ui-sref="settings" class="button-small button button-assertive">Login to save</button>
         </div>

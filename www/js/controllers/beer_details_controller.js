@@ -1,7 +1,7 @@
 angular.module('hopKongIonic')
 
 .controller('BeerDetailsCtrl', ['$scope', 'BeerDetailsResource', '$localStorage', '$http', '$stateParams', '$window', '$auth', function($scope, BeerDetailsResource, $localStorage, $http, $stateParams, $window, $auth) {
-  console.log($stateParams.vendor_id);
+  console.log($stateParams.beer_id);
   BeerDetailsResource.get({id: $stateParams.beer_id}).$promise.then(function(response){
     $scope.beer = response;
     console.log(response);

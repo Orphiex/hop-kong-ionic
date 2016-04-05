@@ -13,7 +13,7 @@ angular.module('hopKongIonic')
       params: $localStorage.selectedGroups
     }).then(function (resp) {
       console.log(resp);
-      $scope.vendors = resp.data;
+      $scope.beers = resp.data;
     }, function (resp) {
       console.log(resp);
     });
@@ -27,7 +27,7 @@ angular.module('hopKongIonic')
       params: data
     }).then(function (resp) {
       console.log(resp);
-      $scope.vendors = resp.data;
+      $scope.beers = resp.data;
     }, function (resp) {
       console.log(resp);
     });
@@ -53,7 +53,7 @@ angular.module('hopKongIonic')
       params: data
     }).then(function (resp) {
       console.log(resp.data);
-      $scope.vendors = resp.data;
+      $scope.beers = resp.data;
     }, function (resp) {
       console.log(resp);
     });
