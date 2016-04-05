@@ -1,0 +1,16 @@
+<ion-view view-title="Current Selection" id="vendors-list">
+  <ion-content class="padding">
+    <div class="list card" ng-repeat="beer in beers">
+      <div class="item item-body">
+        <div>
+          <strong>Name:</strong>  {{beer.name}}<br>
+          <strong>Style:</strong> {{beer.simpstyle}}<br>
+          <button ui-sref="beer-details({beer_id: beer.id})" ui-sref-opts="{reload:true}" class="button-small button button-balanced">More details</button>
+          <!-- <button ng-show="user" class="button-small button button-assertive">RememBEER me</button> -->
+          <button ng-hide="user" class="button-small button button-assertive">Login to save</button>
+          <button class="button button-small icon-center ion-star favoriteButton" ng-show="loggedIn"></button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -22,6 +22,7 @@
           <a class="icon col" ng-show="vendor.instagram_url !== ''" ng-click="toBrowser(vendor.instagram_url)"><img src="http://i.imgur.com/TPn5AyI.png" alt="instagram"></a>
           <!-- add authentication -->
           </div>
+          <button ui-sref="beers-list({vendor_id: vendor.id})" ui-sref-opts="{reload:true}" class="button-small button button-energized">Show Beers Menu</button>
           <button ng-show="user" class="button-small button button-assertive">RememBEER me</button>
           <button ng-hide="user" ui-sref="settings" class="button-small button button-assertive">Login to save</button>
         </div>
