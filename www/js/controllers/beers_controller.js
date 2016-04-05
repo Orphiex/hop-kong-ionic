@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', 'VendorTypeResource', 'CountryResource', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn, VendorTypeResource, CountryResource) {
+.controller('BeersCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'LoggedIn', 'VendorTypeResource', 'CountryResource', '$cordovaBarcodeScanner', 'BarcodeResource', '$ionicPlatform', function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, LoggedIn, VendorTypeResource, CountryResource, $cordovaBarcodeScanner, BarcodeResource, $ionicPlatform) {
 
   // passes data on login status
   $scope.loggedIn = LoggedIn;
@@ -106,15 +106,32 @@ angular.module('hopKongIonic')
   });
 
   // this obtains all the beer names
-  BeerResource.query().$promise.then(function(response){
-    console.log(response);
-    $scope.beers = response;
-    $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
-  });
+  // BeerResource.query().$promise.then(function(response){
+  //   console.log(response);
+  //   $scope.beers = response;
+  //   $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
+  // });
 
   $scope.quickSearch = function(searchValue){
     console.log(searchValue);
     $localStorage.quickSearch = searchValue;
     console.log($localStorage.quickSearch);
+  };
+
+  $scope.scanBarcode = function(){
+    $ionicPlatform.ready(function(){
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
+        console.log(imageData);
+        // BarcodeResource.get({barcode:imageData.text}).$promise.then(function(response){
+        //   console.log(response);
+        //   $scope.beer = response;
+        // });
+        // console.log(imageData.text);
+        // console.log("Barcode Format -> " + imageData.format);
+        // console.log("Cancelled -> " + imageData.cancelled);
+      }, function(error) {
+        console.log("An error happened -> " + error);
+      });
+    });
   };
 }]);

@@ -1,5 +1,6 @@
 <ion-view view-title="Bars Results" id="bars-results">
   <ion-content class="padding">
+
     <div class="list card" ng-repeat="vendor in vendors">
       <div class="item item-body">
         <div>
@@ -22,5 +23,12 @@
         </div>
       </div>
     </div>
+
+    <ion-infinite-scroll
+      ng-if="canWeLoadMoreContent()"
+      on-infinite="populateList()"
+      distance="1%">
+    </ion-infinite-scroll>
+
   </ion-content>
 </ion-view>

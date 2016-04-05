@@ -79,11 +79,14 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     url: '/barcode',
     templateUrl: 'templates/barcode.html',
     controller: 'BarcodeCtrl'
-  })
-  .state('beer-details',{
+  }).state('beer-details', {
     url: '/beers/:beer_id/details',
     templateUrl: 'templates/beer-details.html',
     controller: 'BeerDetailsCtrl'
+  }).state('vendors-list', {
+    url: '/beers/:beer_id/vendors',
+    templateUrl: 'templates/vendors-list',
+    controller: 'VendorsListCtrl'
   });
 
 

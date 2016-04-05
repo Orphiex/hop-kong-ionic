@@ -1,12 +1,13 @@
 angular.module('hopKongIonic')
 
-.controller('HomeCtrl', ['$scope', '$auth', 'LoggedIn', '$cordovaBarcodeScanner', 'BarcodeResource', function($scope, $auth, $cordovaBarcodeScanner, BarcodeResource, LoggedIn){
+.controller('HomeCtrl', ['$scope', '$auth', 'LoggedIn', '$ionicPlatform', '$cordovaBarcodeScanner', 'BarcodeResource', function($scope, $auth, $ionicPlatform, $cordovaBarcodeScanner, BarcodeResource, LoggedIn){
 
   // passes data on login status
   $scope.loggedIn = LoggedIn;
   console.log($scope.loggedIn);
 
   $scope.scanBarcode = function(){
+    console.log($cordovaBarcodeScanner);
     $cordovaBarcodeScanner.scan().then(function(imageData) {
       console.log(imageData);
       // BarcodeResource.get({barcode:imageData.text}).$promise.then(function(response){
