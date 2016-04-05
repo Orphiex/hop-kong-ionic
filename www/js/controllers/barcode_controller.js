@@ -2,7 +2,7 @@ angular.module('hopKongIonic')
 
 .controller('BarcodeCtrl', ['$scope', '$cordovaBarcodeScanner', 'BarcodeResource', function($scope, $cordovaBarcodeScanner, BarcodeResource){
 
-  $scope.scanBarCode = function(){
+  $scope.scanBarcode = function(){
     $cordovaBarcodeScanner.scan().then(function(imageData) {
       console.log(imageData);
       BarcodeResource.get({barcode:imageData.text}).$promise.then(function(response){

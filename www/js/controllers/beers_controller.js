@@ -5,6 +5,8 @@ angular.module('hopKongIonic')
   // passes data on login status
   $scope.loggedIn = LoggedIn;
 
+  $localStorage.quickSearch = undefined;
+
   // these arrays store the items that have BEEN selected
   if ($localStorage.selectedGroups) {
     $scope.selectedGroups = $localStorage.selectedGroups; // stores the data in local storage for the results page
@@ -109,4 +111,10 @@ angular.module('hopKongIonic')
     $scope.beers = response;
     $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
   });
+
+  $scope.quickSearch = function(searchValue){
+    console.log(searchValue);
+    $localStorage.quickSearch = searchValue;
+    console.log($localStorage.quickSearch);
+  };
 }]);
