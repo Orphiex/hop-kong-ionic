@@ -1,10 +1,11 @@
 angular.module('hopKongIonic')
 
 .controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource) {
+
   // Adds a time delay
   var options = {timeout: 5000, enableHighAccuracy: true};
 
-  $scope.results = [];
+  $scope.vendors = [];
 
   var orderLetters = ['A','B','C','D','E','F','G','H','I','J'];
 
@@ -32,8 +33,8 @@ angular.module('hopKongIonic')
     // Gets bar data using the factory in services.js, then applies the distance and returns a sorted array.
     AllBarsResource.query().$promise.then(function(resp){
       var distanceArray = resp.map(addDistance);
-      $scope.results = distanceArray.sort(compare);
-      console.log($scope.results);
+      $scope.vendors = distanceArray.sort(compare);
+      console.log($scope.vendors);
     });
 
     // Applies a distance key and value to each set of bar data.
@@ -64,13 +65,14 @@ angular.module('hopKongIonic')
       dist = Math.acos(dist);
       dist = dist * 180/Math.PI;
       dist = dist * 60 * 1.1515 * 1.609344;
+      dist = (dist.toFixed(2))/1;
       return dist;
     }
 
     // Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
-      $scope.results.forEach(addMarker);
+      $scope.vendors.forEach(addMarker);
 
       // ({
       //   icon: "https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2"
@@ -79,7 +81,7 @@ angular.module('hopKongIonic')
       addMarker({
         latitude: userLat,
         longitude: userLong,
-        name: "You Are Here.",
+        name: "You Are Here",
         icon: "https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2"
       });
 
@@ -95,10 +97,7 @@ angular.module('hopKongIonic')
 
         var contentString = '<div class="content">'+
         '<div class="siteNotice"></div>'+
-        '<h4>' + location.name + '</h4>'+
-        '<p>' + location.street_address + '</p>'+
-        '<p>' + location.district + '</p>'+
-        '<button ui-sref="vendor-details({vendor_id: location.id})" class="button-small button button-balanced">More details</button>'+
+        '<p>' + location.name + '</p>'+
         '</div>';
 
         // Adds an info window to the marker
