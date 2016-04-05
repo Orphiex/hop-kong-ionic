@@ -49,7 +49,35 @@ angular.module('hopKongIonic')
 }])
 .factory('BeerDetailsResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beers/:id.json");
-}]);
+}])
+.factory('VendorsListResource', ['$resource', function($resource){
+  return $resource("http://localhost:3000/api/vendors_list.json");
+}])
+
+// Contains functions for calculating proximity
+.service('DistanceCalc', function(){
+  this.calcDistance = function(lat1, lon1, lat2, lon2){
+    var radlat1 = Math.PI * lat1/180;
+    var radlat2 = Math.PI * lat2/180;
+    var theta = lon1-lon2;
+    var radtheta = Math.PI * theta/180;
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist);
+    dist = dist * 180/Math.PI;
+    dist = dist * 60 * 1.1515 * 1.609344;
+    dist = (dist.toFixed(2))/1;
+    return dist;
+  };
+
+  this.compare = function(a,b){
+    if (a.distance < b.distance)
+      return -1;
+    else if (a.distance > b.distance)
+      return 1;
+    else
+      return 0;
+  };
+});
 
 // also need to update localhost in bars_results_controller and beers_results_controller
 // http://localhost:3000

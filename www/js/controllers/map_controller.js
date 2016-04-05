@@ -1,13 +1,11 @@
 angular.module('hopKongIonic')
 
-.controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource) {
+.controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', 'DistanceCalc', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource, DistanceCalc) {
 
   // Adds a time delay
   var options = {timeout: 5000, enableHighAccuracy: true};
 
   $scope.vendors = [];
-
-  var orderLetters = ['A','B','C','D','E','F','G','H','I','J'];
 
   // Runs the geolocation package that gets the user's current location
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
@@ -33,40 +31,14 @@ angular.module('hopKongIonic')
     // Gets bar data using the factory in services.js, then applies the distance and returns a sorted array.
     AllBarsResource.query().$promise.then(function(resp){
       var distanceArray = resp.map(addDistance);
-      $scope.vendors = distanceArray.sort(compare);
+      $scope.vendors = distanceArray.sort(DistanceCalc.compare);
       console.log($scope.vendors);
     });
 
     // Applies a distance key and value to each set of bar data.
     function addDistance(bar){
-      // console.log(bar);
-      bar.distance = calcDistance(userLat, userLong, bar.latitude, bar.longitude);
+      bar.distance = DistanceCalc.calcDistance(userLat, userLong, bar.latitude, bar.longitude);
       return bar;
-      // console.log(bar);
-    }
-
-    // Simple sorting function for ordering bar results by proximity.
-    function compare(a,b){
-      if (a.distance < b.distance)
-        return -1;
-      else if (a.distance > b.distance)
-        return 1;
-      else
-        return 0;
-    }
-
-    // Calculates the exact distance between two points on a map.  NOTE: this formula calculates distance in a straight line, not distances on foot.
-    function calcDistance(lat1, lon1, lat2, lon2) {
-      var radlat1 = Math.PI * lat1/180;
-      var radlat2 = Math.PI * lat2/180;
-      var theta = lon1-lon2;
-      var radtheta = Math.PI * theta/180;
-      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-      dist = Math.acos(dist);
-      dist = dist * 180/Math.PI;
-      dist = dist * 60 * 1.1515 * 1.609344;
-      dist = (dist.toFixed(2))/1;
-      return dist;
     }
 
     // Wait until the map is loaded

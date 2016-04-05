@@ -5,7 +5,7 @@
         <a class="item item-thumbnail-left" ui-sref="vendor-details({vendor_id: vendor.id})">
           <img src="{{vendor.image_url}}">
           <h2>{{vendor.name}}</h2>
-          <p>{{vendor.district}}</p>
+          <p>{{vendor.district}} - {{vendor.distance}} KM away</p>
         </a>
         <div class="row">
           <div class="bars-buttons col text-center">
@@ -14,7 +14,6 @@
             </button>
             <button ng-hide="user"
                     class="button-small button button-assertive">Login to save
-
             </button>
           </div>
         </div>
