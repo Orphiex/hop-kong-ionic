@@ -1,6 +1,5 @@
 angular.module('hopKongIonic')
 
-// still need to add CountryResource
 .controller('BarsCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'CountryResource',
   function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, CountryResource) {
   // these arrays store the items that have BEEN selected
