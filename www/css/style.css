@@ -3,8 +3,12 @@ body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
 /* home html */
+#home-page {
+  background-color: black;
+
+}
 .home {
-  background: url(http://i.imgur.com/XQzrggQ.png);
+   background-color: black;
   /*http://i.imgur.com/n9Lgwbd.png*/
   background-repeat: no-repeat;
   background-size: contain;
@@ -17,6 +21,10 @@ body {
   position: relative;
   /*top: 50%;*/
   /*transform: translateY(-50%);*/
+}
+img .hop-kong {
+  width: 400px:
+  height: 125px;
 }
 
 /*
