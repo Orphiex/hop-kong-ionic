@@ -1,7 +1,7 @@
 angular.module('hopKongIonic')
 
 .controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http, $auth) {
-  console.log($localStorage.selectedGroups);
+  console.log($localStorage.selectedBarGroups);
 
   // $scope.list = [];
 
@@ -10,13 +10,13 @@ angular.module('hopKongIonic')
     // update for Heroku
     url: "http://localhost:3000/api/bars_results.json",
     paramSerializer: '$httpParamSerializerJQLike',
-    params: $localStorage.selectedGroups
+    params: $localStorage.selectedBarGroups
   }).then(function (resp) {
-    console.log(resp.data);
+    //console.log(resp.data);
     $scope.vendors = resp.data;
-    console.log($scope.list);
+    //console.log($scope.list);
   }, function (resp) {
-    console.log(resp);
+    //console.log(resp);
   });
 
   // $scope.populateList = function(){
