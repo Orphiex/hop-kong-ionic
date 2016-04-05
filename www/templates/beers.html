@@ -1,6 +1,22 @@
 <ion-view view-title="Beers" id="beers">
   <ion-content class="padding">
-    <button ui-sref="map" class="button button-full button-calm">Find Nearest Beer</button>
+    <!-- <button ui-sref="map" class="button button-full button-calm">Find Nearest Beer</button> -->
+
+    <!-- <div>
+      <label for="">Quick Search</label>
+      <input type="text">
+      <button></button>
+    </div> -->
+
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Quick Search</span>
+        <input type="text" name="quicksearch" ng-model="searchValue" required="required" class="form-control" placeholder="Enter beer name">
+      </label>
+      <button ui-sref="beers-results" class="button button-small button-outline button-positive" ng-click="quickSearch(searchValue)">Submit</button>
+    </div>
+
+    <br />
 
     <ion-list>
       <div ng-repeat="(name, obj) in groups">
