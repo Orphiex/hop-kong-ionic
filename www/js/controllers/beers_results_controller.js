@@ -18,7 +18,7 @@ angular.module('hopKongIonic')
       console.log(resp);
     });
   } else {
-    var data = $localStorage.quickSearch;
+    var data = {string: $localStorage.quickSearch.toLowerCase()};
     $http({
       method: 'GET',
       // update for Heroku
