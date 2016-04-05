@@ -66,9 +66,14 @@ angular.module('hopKongIonic')
 
   // reset button
   $scope.deselectAll = function(name, item) {
-    console.log("hello");
-    $scope.selectedGroups[name] = null;
-  };
+    $scope.selectedGroups = {
+      'HK Location': [],
+      'Beer Country': [],
+      'Beer Style': [],
+      'Brewery Name': [],
+      'Beer Name': []
+    };
+    delete $localStorage.selectedGroups;  };
 
 
   // Beer.pluck(:country).uniq
