@@ -3,10 +3,10 @@ angular.module('hopKongIonic')
 .controller('BarsCtrl', ['$scope', 'BeerResource', 'StyleResource', 'BreweryResource', 'LocationResource', '$localStorage', 'CountryResource',
   function($scope, BeerResource, StyleResource, BreweryResource, LocationResource, $localStorage, CountryResource) {
   // these arrays store the items that have BEEN selected
-  if ($localStorage.selectedGroups) {
-    $scope.selectedGroups = $localStorage.selectedGroups; // stores the data in local storage for the results page
+  if ($localStorage.selectedBarGroups) {
+    $scope.selectedBarGroups = $localStorage.selectedBarGroups; // stores the data in local storage for the results page
   } else {
-    $scope.selectedGroups = {
+    $scope.selectedBarGroups = {
       'HK Location': [],
       'Beer Country': [],
       'Beer Style': [],
@@ -54,27 +54,26 @@ angular.module('hopKongIonic')
 
   // adds or removes key (name) and values (items) selected in each group
   $scope.selectItem = function (name, item) {
-    var itemIndex = $scope.selectedGroups[name].indexOf(item);
-    itemIndex == -1 ? $scope.selectedGroups[name].push(item) : $scope.selectedGroups[name].splice(itemIndex, 1);
-    $localStorage.selectedGroups = $scope.selectedGroups;
+    var itemIndex = $scope.selectedBarGroups[name].indexOf(item);
+    itemIndex == -1 ? $scope.selectedBarGroups[name].push(item) : $scope.selectedBarGroups[name].splice(itemIndex, 1);
+    $localStorage.selectedBarGroups = $scope.selectedBarGroups;
   };
 
   // returns the items selected
   $scope.isItemSelected = function (name, item) {
-    return $scope.selectedGroups[name].indexOf(item) != -1;
+    return $scope.selectedBarGroups[name].indexOf(item) != -1;
   };
 
   // reset button
   $scope.deselectAll = function(name, item) {
-    $scope.selectedGroups = {
+    $scope.selectedBarGroups = {
       'HK Location': [],
       'Beer Country': [],
       'Beer Style': [],
       'Brewery Name': [],
       'Beer Name': []
     };
-    delete $localStorage.selectedGroups;  };
-
+    delete $localStorage.selectedBarGroups;  };
 
   // Beer.pluck(:country).uniq
   // Beer.pluck(:simpstyle).uniq

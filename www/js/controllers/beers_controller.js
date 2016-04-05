@@ -8,10 +8,10 @@ angular.module('hopKongIonic')
   $localStorage.quickSearch = undefined;
 
   // these arrays store the items that have BEEN selected
-  if ($localStorage.selectedGroups) {
-    $scope.selectedGroups = $localStorage.selectedGroups; // stores the data in local storage for the results page
+  if ($localStorage.selectedBeerGroups) {
+    $scope.selectedBeerGroups = $localStorage.selectedBeerGroups; // stores the data in local storage for the results page
   } else {
-    $scope.selectedGroups = {
+    $scope.selectedBeerGroups = {
       'HK Location': [],
       'Vendor Type': [],
       'Beer Country': [],
@@ -64,15 +64,31 @@ angular.module('hopKongIonic')
 
   // adds or removes key (name) and values (items) selected in each group
   $scope.selectItem = function (name, item) {
-    var itemIndex = $scope.selectedGroups[name].indexOf(item);
-    itemIndex == -1 ? $scope.selectedGroups[name].push(item) : $scope.selectedGroups[name].splice(itemIndex, 1);
-    $localStorage.selectedGroups = $scope.selectedGroups;
+    //console.log($scope.selectedBeerGroups);
+    var itemIndex = $scope.selectedBeerGroups[name].indexOf(item);
+    itemIndex == -1 ? $scope.selectedBeerGroups[name].push(item) : $scope.selectedBeerGroups[name].splice(itemIndex, 1);
+    $localStorage.selectedBeerGroups = $scope.selectedBeerGroups;
   };
 
   // returns the items selected
   $scope.isItemSelected = function (name, item) {
-    return $scope.selectedGroups[name].indexOf(item) != -1;
+    //console.log(name);
+    return $scope.selectedBeerGroups[name].indexOf(item) != -1;
   };
+
+  // reset button
+  $scope.deselectAll = function(name, item) {
+    $scope.selectedBeerGroups = {
+      'HK Location': [],
+      'Vendor Type': [],
+      'Beer Country': [],
+      'Beer Style': [],
+      'Brewery Name': [],
+      'Beer Name': []
+    };
+    delete $localStorage.selectedBeerGroups;
+  };
+
 
   // Beer.pluck(:country).uniq
   // Beer.pluck(:simpstyle).uniq
@@ -105,12 +121,12 @@ angular.module('hopKongIonic')
     $scope.groups['Brewery Name'].list = response;
   });
 
-  // this obtains all the beer names
-  // BeerResource.query().$promise.then(function(response){
+  //this obtains all the beer names
+  BeerResource.query().$promise.then(function(response){
   //   console.log(response);
-  //   $scope.beers = response;
-  //   $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
-  // });
+    $scope.beers = response;
+    $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
+  });
 
   $scope.quickSearch = function(searchValue){
     console.log(searchValue);

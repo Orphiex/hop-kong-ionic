@@ -1,8 +1,8 @@
 angular.module('hopKongIonic')
 
 .controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, LoggedIn) {
-  console.log($localStorage.selectedGroups);
-  console.log($localStorage.quickSearch);
+  console.log($localStorage.selectedBeerGroups);
+  //console.log($localStorage.quickSearch);
 
   if ($localStorage.quickSearch == undefined){
     $http({
@@ -10,7 +10,7 @@ angular.module('hopKongIonic')
       // update for Heroku
       url: "http://localhost:3000/api/beers_results.json",
       paramSerializer: '$httpParamSerializerJQLike',
-      params: $localStorage.selectedGroups
+      params: $localStorage.selectedBeerGroups
     }).then(function (resp) {
       console.log(resp);
       $scope.beers = resp.data;
@@ -49,6 +49,7 @@ angular.module('hopKongIonic')
   function getBeerBookmarks(data){
     $http({
       method: 'GET',
+      // update for Heroku
       url: "http://localhost:3000/api/beer_bookmarks",
       params: data
     }).then(function (resp) {
@@ -63,6 +64,7 @@ angular.module('hopKongIonic')
     var data = {user_id: $scope.user.id, beer_id: beer_id};
     $http({
       method: 'POST',
+      // update for Heroku
       url: "http://localhost:3000/api/beer_bookmarks",
       params: data
     }).then(function(resp){
@@ -76,6 +78,7 @@ angular.module('hopKongIonic')
   $scope.removeBeerBookmark = function(id){
     $http({
       method: 'DELETE',
+      // update for Heroku
       url: "http://localhost:3000/api/beer_bookmarks/"+id,
     }).then(function(resp){
       var data = {user_id: $scope.user.id};
