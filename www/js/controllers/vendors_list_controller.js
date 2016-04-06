@@ -29,7 +29,11 @@ angular.module('hopKongIonic')
     // });
 
     function addDistance(bar){
-      bar.distance = DistanceCalc.calcDistance(userLat, userLong, bar.latitude, bar.longitude);
+      if (bar.latitude === 0 && bar.longitude === 0){
+        bar.distance = "Unknown";
+      } else {
+        bar.distance = DistanceCalc.calcDistance(userLat, userLong, bar.latitude, bar.longitude);
+      }
       return bar;
     }
   });

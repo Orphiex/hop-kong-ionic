@@ -32,7 +32,6 @@ angular.module('hopKongIonic')
     AllBarsResource.query().$promise.then(function(resp){
       var distanceArray = resp.map(addDistance);
       $scope.vendors = distanceArray.sort(DistanceCalc.compare);
-      console.log($scope.vendors);
     });
 
     // Applies a distance key and value to each set of bar data.
