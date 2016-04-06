@@ -9,14 +9,12 @@ angular.module('hopKongIonic')
     var userLat  = position.coords.latitude;
     var userLong = position.coords.longitude;
 
-    console.log($stateParams.beer);
-
     $http({
       method: 'GET',
       url: "http://localhost:3000/api/vendors_list.json",
       params: {beer_id: $stateParams.beer_id}
     }).then(function(resp){
-      var distanceArray = resp.map(addDistance);
+      var distanceArray = resp.data.map(addDistance);
       $scope.vendors = distanceArray.sort(DistanceCalc.compare);
       console.log($scope.vendors);
       // $scope.vendors = resp.data;
