@@ -5,6 +5,7 @@ angular.module('hopKongIonic')
   // passes data on login status
   $scope.loggedIn = LoggedIn;
 
+  $scope.searchValue = "";
   $localStorage.quickSearch = undefined;
 
   // these arrays store the items that have BEEN selected

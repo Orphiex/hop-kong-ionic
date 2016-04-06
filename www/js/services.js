@@ -80,6 +80,52 @@ angular.module('hopKongIonic')
     else
       return 0;
   };
+})
+.service('BeerBkmkService', function($http){
+  this.getBeerBookmarks = function(data){
+    $http({
+      method: 'GET',
+      // update for Heroku
+      url: "http://localhost:3000/api/beer_bookmarks",
+      params: data
+    }).then(function (resp) {
+      console.log(resp.data);
+      $scope.beers = resp.data;
+    }, function (resp) {
+      console.log(resp);
+    });
+  };
+
+  this.addBeerBookmark = function(user_id, beer_id){
+    var data = {user_id: user_id, beer_id: beer_id};
+    $http({
+      method: 'POST',
+      // update for Heroku
+      url: "http://localhost:3000/api/beer_bookmarks",
+      params: data
+    }).then(function(resp){
+      var data = {user_id: user_id};
+      getBookmarks(data);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
+
+  this.removeBeerBookmark = function(user_id){
+    $http({
+      method: 'DELETE',
+      // update for Heroku
+      url: "http://localhost:3000/api/beer_bookmarks/"+user_id,
+    }).then(function(resp){
+      var data = {user_id: user_id};
+      getBookmarks(data);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
+})
+.service('VendorBkmkService', function(){
+
 });
 
 // also need to update localhost in bars_results_controller and beers_results_controller

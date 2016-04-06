@@ -58,7 +58,6 @@ angular.module('hopKongIonic')
 
       function addMarker(location){
         // Applies new marker
-        console.log(location);
         var marker = new google.maps.Marker({
           map: $scope.map,
           animation: google.maps.Animation.DROP,
