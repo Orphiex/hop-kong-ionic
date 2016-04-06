@@ -81,57 +81,71 @@ angular.module('hopKongIonic')
       return 0;
   };
 })
-.service('BeerBkmkService', function($http){
+.service('BeerBkmkService', function($http, $q){
   this.addBeerBookmark = function(user_id, beer_id){
-    var data = {user_id: user_id, beer_id: beer_id};
-    $http({
-      method: 'POST',
-      // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks",
-      params: data
-    }).then(function(resp){
-      console.log(resp);
-    }, function(resp){
-      console.log(resp);
+    return $q(function(resolve,reject){
+      var data = {user_id: user_id, beer_id: beer_id};
+      $http({
+        method: 'POST',
+        // update for Heroku
+        url: "http://localhost:3000/api/beer_bookmarks",
+        params: data
+      }).then(function(resp){
+        console.log(resp);
+        resolve(resp);
+      },function(resp){
+        console.log(resp);
+        reject(resp);
+      });
     });
   };
-
   this.removeBeerBookmark = function(bkmk_id){
-    $http({
-      method: 'DELETE',
-      // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks/"+bkmk_id,
-    }).then(function(resp){
-      console.log(resp);
-    }, function(resp){
-      console.log(resp);
+    return $q(function(resolve,reject){
+      $http({
+        method: 'DELETE',
+        // update for Heroku
+        url: "http://localhost:3000/api/beer_bookmarks/"+bkmk_id,
+      }).then(function(resp){
+        console.log(resp);
+        resolve(resp);
+      },function(resp){
+        console.log(resp);
+        reject(resp);
+      });
     });
   };
 })
-.service('VendorBkmkService', function(){
+
+.service('VendorBkmkService', function($http, $q){
   this.addVendorBookmark = function(user_id, vendor_id){
-    var data = {user_id: user_id, vendor_id: vendor_id};
-    $http({
-      method: 'POST',
-      // update for Heroku
-      url: "http://localhost:3000/api/vendor_bookmarks",
-      params: data
-    }).then(function(resp){
-      console.log(resp);
-    }, function(resp){
-      console.log(resp);
+    return $q(function(resolve,reject){
+      var data = {user_id: user_id, vendor_id: vendor_id};
+      $http({
+        method: 'POST',
+        // update for Heroku
+        url: "http://localhost:3000/api/vendor_bookmarks",
+        params: data
+      }).then(function(resp){
+        console.log(resp);
+        resolve(resp);
+      }, function(resp){
+        console.log(resp);
+        reject(resp);
+      });
     });
   };
 
   this.removeVendorBookmark = function(bkmk_id){
-    $http({
-      method: 'DELETE',
-      // update for Heroku
-      url: "http://localhost:3000/api/vendor_bookmarks/"+bkmk_id,
-    }).then(function(resp){
-      console.log(resp);
-    }, function(resp){
-      console.log(resp);
+    return $q(function(resolve,reject){
+      $http({
+        method: 'DELETE',
+        // update for Heroku
+        url: "http://localhost:3000/api/vendor_bookmarks/"+bkmk_id,
+      }).then(function(resp){
+        console.log(resp);
+      }, function(resp){
+        console.log(resp);
+      });
     });
   };
 });

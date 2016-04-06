@@ -29,14 +29,18 @@ angular.module('hopKongIonic')
     $window.open(encodeURI(link), '_system');
   };
 
+  // adds a beer bookmark
   $scope.addBookmark = function(beer_id){
-    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id);
-    getResults();
+    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id).then(function(){
+      getResults();
+    });
   };
 
+  // adds a beer bookmark
   $scope.deleteBookmark = function(bkmk_id){
-    BeerBkmkService.removeBeerBookmark(bkmk_id);
-    getResults();
+    BeerBkmkService.removeBeerBookmark(bkmk_id).then(function(){
+      getResults();
+    });
   };
 
 }]);
