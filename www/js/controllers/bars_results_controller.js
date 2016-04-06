@@ -32,10 +32,7 @@ angular.module('hopKongIonic')
         // update for Heroku
         url: "http://localhost:3000/api/bars_results.json",
         paramSerializer: '$httpParamSerializerJQLike',
-        params: {
-          data: $localStorage.selectedBarGroups,
-          user_id_tmp: $scope.user.id
-        }
+        params: $localStorage.selectedBarGroups,
       }).then(function (resp) {
         console.log(resp);
         var distanceArray = resp.data.map(addDistance);
