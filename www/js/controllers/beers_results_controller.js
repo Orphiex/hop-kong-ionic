@@ -1,100 +1,66 @@
 angular.module('hopKongIonic')
 
-.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, LoggedIn) {
+.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, BeerBkmkService) {
   console.log($localStorage.selectedBeerGroups);
   //console.log($localStorage.quickSearch);
 
-  if ($localStorage.quickSearch == undefined){
-    $http({
-      method: 'GET',
-      // update for Heroku
-      url: "http://localhost:3000/api/beers_results.json",
-      paramSerializer: '$httpParamSerializerJQLike',
-      params: $localStorage.selectedBeerGroups
-    }).then(function (resp) {
-      console.log(resp);
-      $scope.beers = resp.data;
-    }, function (resp) {
-      console.log(resp);
-    });
-  } else {
-    var data = {string: $localStorage.quickSearch.toLowerCase()};
-    $http({
-      method: 'GET',
-      // update for Heroku
-      url: "http://localhost:3000/api/beers_quicksearch.json",
-      // paramSerializer: '$httpParamSerializerJQLike',
-      params: data
-    }).then(function (resp) {
-      console.log(resp);
-      $scope.beers = resp.data;
-    }, function (resp) {
-      console.log(resp);
-    });
-  }
-
-  // code below hides bookmark if user is not authenticated
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
     $scope.loggedIn = resp.signedIn;
-    console.log($scope.user.id);
     console.log("Logged In");
-    var data = {user_id: $scope.user.id};
-    getBeerBookmarks(data);
+    getResults();
   }).catch(function(resp){
-    $scope.user = null;
+    $scope.user = {id: 0};
+    $scope.loggedIn = false;
     console.log("Not Logged In");
+    getResults();
   });
 
-  function getBeerBookmarks(data){
-    $http({
-      method: 'GET',
-      // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks",
-      params: data
-    }).then(function (resp) {
-      console.log(resp.data);
-      $scope.beers = resp.data;
-    }, function (resp) {
-      console.log(resp);
-    });
+  function getResults(){
+    if ($localStorage.quickSearch === undefined){
+      $http({
+        method: 'GET',
+        // update for Heroku
+        url: "http://localhost:3000/api/beers_results.json",
+        paramSerializer: '$httpParamSerializerJQLike',
+        params: {
+          data: $localStorage.selectedBeerGroups,
+          user_id_tmp: $scope.user.id
+        }
+      }).then(function (resp) {
+        console.log(resp);
+        $scope.beers = resp.data;
+      }, function (resp) {
+        console.log(resp);
+      });
+    } else {
+      var data = {
+        string: $localStorage.quickSearch.toLowerCase(),
+        user_id_tmp: $scope.user.id
+      };
+      $http({
+        method: 'GET',
+        // update for Heroku
+        url: "http://localhost:3000/api/beers_quicksearch.json",
+        // paramSerializer: '$httpParamSerializerJQLike',
+        params: data
+      }).then(function (resp) {
+        console.log(resp);
+        $scope.beers = resp.data;
+      }, function (resp) {
+        console.log(resp);
+      });
+    }
   }
 
-  $scope.addBeerBookmark = function(beer_id){
-    var data = {user_id: $scope.user.id, beer_id: beer_id};
-    $http({
-      method: 'POST',
-      // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks",
-      params: data
-    }).then(function(resp){
-      var data = {user_id: $scope.user.id};
-      getBookmarks(data);
-    }, function(resp){
-      console.log(resp);
-    });
+  $scope.addBookmark = function(beer_id){
+    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id);
+    getResults();
   };
 
-  $scope.removeBeerBookmark = function(id){
-    $http({
-      method: 'DELETE',
-      // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks/"+id,
-    }).then(function(resp){
-      var data = {user_id: $scope.user.id};
-      getBookmarks(data);
-    }, function(resp){
-      console.log(resp);
-    });
+  $scope.deleteBookmark = function(bkmk_id){
+    BeerBkmkService.removeBeerBookmark(bkmk_id);
+    getResults();
   };
-
-    // BeerBookmarksResource.query().$promise.then(function(response){
-    //   $scope.bookmarks = response;
-    //   console.log(response);
-    // });
 
 });
-
-
-
-// ['$scope', 'BeerResource', '$localStorage']
