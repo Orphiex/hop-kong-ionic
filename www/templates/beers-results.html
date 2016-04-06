@@ -15,12 +15,14 @@
             <div class="bars-buttons col text-center">
               <button ng-hide="user"
                       ui-sref="settings"
-                      class="button-small button button-assertive">
+                      class="button-small button button-assertive"
+                      ng-click="saveBeer()">
                       Login to save
               </button>
               <button ng-show="user"
                       ui-sref="bookmarks"
-                      class="button button-small button-assertive" >
+                      class="button button-small button-assertive"
+                      ng-click="">
                       RememBEER me
               </button>
             </div>
