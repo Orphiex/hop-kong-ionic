@@ -1,18 +1,22 @@
 <ion-view view-title="Home" id="home-page">
   <ion-content class="padding">
     <div class="home">
-      <h2>Hop Kong</h2>
+    <h2>Hop Kong</h2>
 
-      <img class="hop-kong" src="http://i.imgur.com/XQzrggQ.png">
-      <h4>Where to find craft beer in Hong Kong</h4>
-        <button ui-sref="bars"
+    <img class="hop-kong" src="http://i.imgur.com/XQzrggQ.png">
+    <h4 class="tag-line">Where to find craft beer in Hong Kong</h4>
+      <div class="row">
+        <div class="bars-buttons col text-center">
+          <button ui-sref="bars"
                   class="button button-large button-positive">
                   Find a Bar
-        </button>
-        <button   ui-sref="beers"
+          </button>
+          <button ui-sref="beers"
                   class="button button-large button-calm">
                   Find a Beer
-        </button>
+          </button>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>

@@ -73,7 +73,31 @@ angular.module('hopKongIonic')
       'Brewery Name': [],
       'Beer Name': []
     };
-    delete $localStorage.selectedBarGroups;  };
+    delete $localStorage.selectedBarGroups;
+  };
+
+  $scope.isAllReady = function () {
+    var isReady = true;
+
+    for (var key in $scope.readyList) {
+      isReady = isReady && $scope.readyList[key];
+    }
+
+    if (isReady) {
+      setTimeout(function(){
+        $scope.isReady = true;
+      }, 10);
+    }
+  };
+
+
+  $scope.readyList = {
+    'HK Location': false,
+    'Beer Country': false,
+    'Beer Style': false,
+    'Brewery Name': false,
+    'Beer Name': false
+  };
 
   // Beer.pluck(:country).uniq
   // Beer.pluck(:simpstyle).uniq
@@ -82,27 +106,37 @@ angular.module('hopKongIonic')
   // this is returning unique locations (eg Central, Wan Chai)
   LocationResource.query().$promise.then(function(response){
     $scope.groups['HK Location'].list = response;
+    $scope.readyList['HK Location'] = true;
+     $scope.isAllReady();
   });
 
   // this is returning unique countries for the beers (eg Hong Kong, USA)
   CountryResource.query().$promise.then(function(response){
     //console.log(response);
     $scope.groups['Beer Country'].list = response;
+    $scope.readyList['Beer Country'] = true;
+     $scope.isAllReady();
   });
 
   // this is obtaining unique beer style names (eg Lager, IPA)
   StyleResource.query().$promise.then(function(response){
     $scope.groups['Beer Style'].list = response;
+    $scope.readyList['Beer Style'] = true;
+     $scope.isAllReady();
   });
 
   // this is obtaining unique beer brewery names
   BreweryResource.query().$promise.then(function(response){
     $scope.groups['Brewery Name'].list = response;
+    $scope.readyList['Brewery Name'] = true;
+     $scope.isAllReady();
   });
 
   // this is obtaining all the beer names
   BeerResource.query().$promise.then(function(response){
     $scope.beers = response;
     $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
+    $scope.readyList['Beer Name'] = true;
+     $scope.isAllReady();
   });
 }]);

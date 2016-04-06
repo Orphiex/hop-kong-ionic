@@ -9,7 +9,7 @@
         </button>
       </div>
     </div>
-    <p>Beer Geek Search </p>
+    <p class="beer-geek-search">Beer Geek Search </p>
     <ion-list>
       <div ng-repeat="(name, obj) in groups">
         <ion-item class="item-stable"
@@ -26,7 +26,7 @@
              ng-show="isGroupShown(name)">
           <span ng-repeat="item in obj.list"
                 ng-click="selectItem(name, item)"
-                ng-class="{selected: isItemSelected(name, item)}">
+                ng-class="{selected: isItemSelected(name, item), 'can-animate': isReady}">
             {{item}}
           </span>
         </div>
@@ -35,7 +35,7 @@
                   ng-show="isGroupShown(name)"
                   ng-repeat="item in obj.list"
                   ng-click="selectItem(name, item)"
-                  ng-class="{selected: isItemSelected(name, item)}">
+                  ng-class="{selected: isItemSelected(name, item), 'can-animate': isReady}">
           {{item}}
         </ion-item>
       </div>

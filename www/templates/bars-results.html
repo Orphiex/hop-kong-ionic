@@ -6,10 +6,11 @@
         <div>
           <a class="item item-thumbnail-left"
              ui-sref="vendor-details({vendor_id: vendor.id})">
-            <img src="{{vendor.image_url}}">
+            <img class="bars-results-image"
+                 src="{{vendor.image_url}}">
             <h2>{{vendor.name}}</h2>
             <p>{{vendor.district}}</p>
-            <p>Distance:</p>
+            <p>Distance: {{vendor.distance}} km</p>
           </a>
           <div class="row">
             <div class="bars-buttons col text-center">
