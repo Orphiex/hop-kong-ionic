@@ -14,6 +14,7 @@ angular.module('hopKongIonic')
     getResults();
   });
 
+  // beers quick search
   function getResults(){
     if ($localStorage.quickSearch === undefined){
       $http({
@@ -48,14 +49,18 @@ angular.module('hopKongIonic')
     }
   }
 
+  // adds a Beer bookmark
   $scope.addBookmark = function(beer_id){
-    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id);
-    getResults();
+    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id).then(function(){
+      getResults();
+    });
   };
 
+  // deletes a Beer bookmark
   $scope.deleteBookmark = function(bkmk_id){
-    BeerBkmkService.removeBeerBookmark(bkmk_id);
-    getResults();
+    BeerBkmkService.removeBeerBookmark(bkmk_id).then(function(){
+      getResults();
+    });
   };
 
 });

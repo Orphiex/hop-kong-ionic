@@ -1,6 +1,6 @@
 <ion-view view-title="Beer Menu" id="beers-list">
   <ion-content class="padding">
-    <h2>Vendor: {{beers.vendor_name}}</h2>
+    <h2 id="menu-vendor-name">Vendor Name {{$stateParams.vendor_id}}</h2>
     <div class="list card"
          ng-repeat="beer in beers">
       <div class="item item-body">
@@ -11,28 +11,6 @@
           <h2>{{beer.name}}</h2>
           <p>{{beer.simpstyle}}</p>
         </a>
-        <div class="row">
-          <div class="bars-buttons col text-center">
-          <button ng-hide="user"
-                  ui-sref="settings"
-                  class="button-small button button-assertive">Login to save
-          </button>
-          <!-- <button ng-show="!loggedIn"
-                  ui-sref="settings"
-                  class="button-small button button-assertive">
-                  Login to save
-          </button>
-          <button ng-show="loggedIn && !beer.is_bookmarked"
-                  class="button button-small button-assertive"
-                  ng-click="addBookmark(beer.id)">
-                  RememBEER me
-          </button>
-          <button ng-show="loggedIn && beer.is_bookmarked"
-                  class="button button-small button-assertive"
-                  ng-click="deleteBookmark(beer.user_bookmark[0].id)">
-                  BEERmarked
-          </button> -->
-        </div>
       </div>
     </div>
   </ion-content>
