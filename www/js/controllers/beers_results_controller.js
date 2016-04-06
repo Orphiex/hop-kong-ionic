@@ -7,12 +7,10 @@ angular.module('hopKongIonic')
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
     $scope.loggedIn = resp.signedIn;
-    console.log("Logged In");
     getResults();
   }).catch(function(resp){
     $scope.user = {id: 0};
     $scope.loggedIn = false;
-    console.log("Not Logged In");
     getResults();
   });
 
@@ -24,10 +22,7 @@ angular.module('hopKongIonic')
         // update for Heroku
         url: "http://localhost:3000/api/beers_results.json",
         paramSerializer: '$httpParamSerializerJQLike',
-        params: {
-          data: $localStorage.selectedBeerGroups,
-          user_id_tmp: $scope.user.id
-        }
+        params: $localStorage.selectedBeerGroups
       }).then(function (resp) {
         console.log(resp);
         $scope.beers = resp.data;
