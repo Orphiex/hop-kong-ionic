@@ -70,7 +70,10 @@ angular.module('hopKongIonic')
   };
 
   this.compare = function(a,b){
-    if (a.distance < b.distance)
+    if (a.distance == "Unknown")
+      return 1;
+    else if
+      (a.distance < b.distance)
       return -1;
     else if (a.distance > b.distance)
       return 1;
