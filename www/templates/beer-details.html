@@ -9,7 +9,7 @@
           </span><br>
           Style: {{beer.simpstyle}}<br>
           ABV: {{beer.abv}}%<br>
-          <img src={{beer.country_image}}>
+          <img src={{beer.country_image}}><br>
           Brewery: {{beer.brewery}}<br>
           <!-- on-click="window.open('{{vendor.website_url}}', '_system', 'location=yes'); return false;" -->
           <div class="row">
@@ -45,15 +45,15 @@
           </div>
           <button ui-sref="vendors-list({beer_id: beer.id})"
                   ui-sref-opts="{reload:true}"
-                  class="button-small button button-energized">
+                  class="button button-energized">
                   Show Vendors
           </button>
           <button ng-show="user"
-                  class="button-small button button-assertive">RememBEER me
+                  class="button button-assertive">RememBEER me
           </button>
           <button ng-hide="user"
                   ui-sref="settings"
-                  class="button-small button button-assertive">
+                  class="button button-assertive">
                   Login to save
           </button>
         </div>

@@ -13,12 +13,15 @@
         </a>
         <div class="row">
           <div class="bars-buttons col text-center">
-            <button ng-hide="user"
+            <button ng-show="!user"
                     ui-sref="settings"
                     class="button-small button button-assertive">Login to save
             </button>
-            <button ng-show="user"
+            <button ng-show="user && !object"
                     class="button-small button button-assertive">RememBEER me
+            </button>
+            <button ng-show="user && object"
+                    class="button-small button button-balanced">Bookmarked
             </button>
           </div>
         </div>
