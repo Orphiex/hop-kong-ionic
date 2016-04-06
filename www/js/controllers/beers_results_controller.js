@@ -1,17 +1,17 @@
 angular.module('hopKongIonic')
 
-.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, LoggedIn, BeerBkmkService) {
+.controller('BeersResultsCtrl', function ($scope, BeersResultsResource, BeerBookmarksResource, $localStorage, $http, $auth, BeerBkmkService) {
   console.log($localStorage.selectedBeerGroups);
   //console.log($localStorage.quickSearch);
 
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
-    console.log($scope.user);
     $scope.loggedIn = resp.signedIn;
     console.log("Logged In");
     getResults();
   }).catch(function(resp){
     $scope.user = {id: 0};
+    $scope.loggedIn = false;
     console.log("Not Logged In");
     getResults();
   });
@@ -52,5 +52,15 @@ angular.module('hopKongIonic')
       });
     }
   }
+
+  $scope.addBookmark = function(beer_id){
+    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id);
+    getResults();
+  };
+
+  $scope.deleteBookmark = function(bkmk_id){
+    BeerBkmkService.removeBeerBookmark(bkmk_id);
+    getResults();
+  };
 
 });
