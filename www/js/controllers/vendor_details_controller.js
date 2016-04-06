@@ -15,10 +15,14 @@ angular.module('hopKongIonic')
   // hides bookmark if user authenticated
   $auth.validateUser().then(function(resp){
     $scope.user = resp;
+    $scope.loggedIn = resp.signedIn;
     console.log("Logged In");
+    getResults();
   }).catch(function(resp){
-    $scope.user = null;
+    $scope.user = {id: 0};
+    $scope.loggedIn = false;
     console.log("Not Logged In");
+    getResults();
   });
 
 

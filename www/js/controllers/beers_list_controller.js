@@ -5,6 +5,7 @@ angular.module('hopKongIonic')
 
   $http({
     method: 'GET',
+    // update for Heroku
     url: "http://localhost:3000/api/beers_list.json",
     params: {vendor_id: $stateParams.vendor_id}
   }).then(function(resp){
@@ -20,5 +21,18 @@ angular.module('hopKongIonic')
     $scope.user = null;
     console.log("Not Logged In");
   });
+
+  // add a beer bookmark
+  $scope.addBookmark = function(beer_id){
+    BeerBkmkService.addBeerBookmark($scope.user.id, beer_id).then(function(){
+      getResults();
+    });
+  };
+  // delete a beer bookmark
+  $scope.deleteBookmark = function(bkmk_id){
+    BeerBkmkService.removeBeerBookmark(bkmk_id).then(function(){
+      getResults();
+    });
+  };
 
 }]);

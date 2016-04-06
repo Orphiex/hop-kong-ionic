@@ -135,11 +135,11 @@ body {
 #beers-results .item-body {
   background-color: black;
   color: white;
-  opacity: 0.8;
 }
 .beers-results-image {
   border: 1px solid black;
   border-radius: 5px;
+  margin-top: 15px;
 }
 /* bookmarks
 
