@@ -14,12 +14,20 @@
           </a>
           <div class="row">
             <div class="bars-buttons col text-center">
-               <button ng-hide="user"
-                       ui-sref="settings"
-                       class="button-small button button-assertive">Login to save
+              <button ng-show="!loggedIn"
+                      ui-sref="settings"
+                      class="button-small button button-assertive">
+                      Login to save
               </button>
-              <button ng-show="user"
-                      class="button-small button button-assertive">RememBEER me
+              <button ng-show="loggedIn && !bar.is_bookmarked"
+                      class="button button-small button-assertive"
+                      ng-click="addBookmark(bar.id)">
+                      RememBEER me
+              </button>
+              <button ng-show="loggedIn && bar.is_bookmarked"
+                      class="button button-small button-assertive"
+                      ng-click="deleteBookmark(bar.user_bookmark[0].id)">
+                      BEERmarked
               </button>
             </div>
           </div>

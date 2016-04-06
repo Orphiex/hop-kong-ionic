@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http, $auth, $cordovaGeolocation, DistanceCalc) {
+.controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http, $auth, $cordovaGeolocation, DistanceCalc, VendorBkmkService) {
   console.log($localStorage.selectedBarGroups);
 
   // $scope.list = [];
@@ -32,10 +32,7 @@ angular.module('hopKongIonic')
         // update for Heroku
         url: "http://localhost:3000/api/bars_results.json",
         paramSerializer: '$httpParamSerializerJQLike',
-        params: {
-          data: $localStorage.selectedBarGroups,
-          user_id_tmp: $scope.user.id
-        }
+        params: $localStorage.selectedBarGroups,
       }).then(function (resp) {
         console.log(resp);
         var distanceArray = resp.data.map(addDistance);
@@ -55,6 +52,19 @@ angular.module('hopKongIonic')
       return bar;
     }
 
+    // adds a bar bookmark
+    $scope.addBookmark = function(bar_id){
+      BarBkmkService.addBarBookmark($scope.user.id, bar_id).then(function(){
+        getResults();
+      });
+    };
+
+    // adds a bar bookmark
+    $scope.deleteBookmark = function(bkmk_id){
+      BarBkmkService.removeBarBookmark(bkmk_id).then(function(){
+        getResults();
+      });
+    };
 
   });
 });
