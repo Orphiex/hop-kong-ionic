@@ -1,6 +1,6 @@
 angular.module('hopKongIonic')
 
-.controller('BeersListCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
+.controller('BeersListCtrl', ['$scope', '$http', '$auth', '$stateParams', function($scope, $http, $auth, $stateParams){
   console.log($stateParams.vendor_id);
 
   $http({
@@ -12,6 +12,13 @@ angular.module('hopKongIonic')
     $scope.beers = resp.data;
   }, function(resp){
     console.log(resp);
+  });
+
+  $auth.validateUser().then(function(resp){
+    $scope.user = resp;
+  }).catch(function(resp){
+    $scope.user = null;
+    console.log("Not Logged In");
   });
 
 }]);

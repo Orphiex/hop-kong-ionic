@@ -86,7 +86,7 @@ angular.module('hopKongIonic')
 
   // this is returning unique countries for the beers (eg Hong Kong, USA)
   CountryResource.query().$promise.then(function(response){
-    console.log(response);
+    //console.log(response);
     $scope.groups['Beer Country'].list = response;
   });
 

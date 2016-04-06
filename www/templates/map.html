@@ -1,10 +1,12 @@
 <ion-view view-title="Map">
   <ion-content>
     <div id="map" data-tap-disabled="true"></div>
-    <div class="list card" ng-repeat="vendor in vendors">
+    <div class="list card"
+         ng-repeat="vendor in vendors">
       <div class="item item-body">
-        <a class="item item-thumbnail-left" ui-sref="vendor-details({vendor_id: vendor.id})">
-          <img src="{{vendor.image_url}}">
+        <a class="item item-thumbnail-left"
+           ui-sref="vendor-details({vendor_id: vendor.id})">
+          <img class="map-image" src="{{vendor.image_url}}">
           <h2>{{vendor.name}}</h2>
           <p>{{vendor.street_address}}, {{vendor.district}}</p>
           <p>{{vendor.distance}} km away</p>

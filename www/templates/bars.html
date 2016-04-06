@@ -12,8 +12,12 @@
     <p>Beer Geek Search </p>
     <ion-list>
       <div ng-repeat="(name, obj) in groups">
-        <ion-item class="item-stable" ng-click="toggleGroup(name)" ng-class="{active: isGroupShown(name)}">
-          <i class="icon" ng-class="isGroupShown(name) ? 'ion-minus' : 'ion-plus'"></i>
+        <ion-item class="item-stable"
+                  ng-click="toggleGroup(name)"
+                  ng-class="{active: isGroupShown(name)}">
+          <i class="icon"
+             ng-class="isGroupShown(name) ? 'ion-minus' : 'ion-plus'">
+          </i>
           &nbsp;
           {{name}}
         </ion-item>

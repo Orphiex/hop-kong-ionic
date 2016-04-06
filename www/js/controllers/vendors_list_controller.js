@@ -1,5 +1,6 @@
 angular.module('hopKongIonic')
 
+
 .controller('VendorsListCtrl', ['$scope', '$http', '$stateParams', '$cordovaGeolocation', 'DistanceCalc', 'VendorsListResource', function($scope, $http, $stateParams, $cordovaGeolocation, DistanceCalc, VendorsListResource){
 
   var options = {timeout: 5000, enableHighAccuracy: true};
@@ -36,5 +37,12 @@ angular.module('hopKongIonic')
       }
       return bar;
     }
+  });
+
+  $auth.validateUser().then(function(resp){
+    $scope.user = resp;
+  }).catch(function(resp){
+    $scope.user = null;
+    console.log("Not Logged In");
   });
 }]);

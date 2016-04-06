@@ -2,21 +2,44 @@
   <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
-          <span class="input-label">Email</span>
-          <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control" placeholder="Enter Email"/>
+        <span class="input-label">Email</span>
+        <input type="email"
+               name="email"
+               ng-model="registrationForm.email"
+               required="required"
+               class="form-control"
+               placeholder="Enter Email"/>
       </label>
       <label class="item item-input item-stacked-label">
-          <span class="input-label">Username</span>
-          <input type="text" name="email" ng-model="registrationForm.nickname" required="required" class="form-control" placeholder="Enter Username"/>
+        <span class="input-label">Username</span>
+        <input type="text"
+               name="email"
+               ng-model="registrationForm.nickname" required="required"
+               class="form-control"
+               placeholder="Enter Username"/>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Password</span>
-        <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control" placeholder="Enter Password"/>
+        <input type="password"
+               name="password"
+               ng-model="registrationForm.password"
+               required="required"
+               class="form-control"
+               placeholder="Enter Password"/>
       </label>
       <label class="item item-input item-stacked-label">
-        <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control" placeholder="Confirm Password"/>
+        <span class="input-label">Password Confirmation</span>
+        <input type="password"
+               name="password_confirmation"
+               ng-model="registrationForm.password_confirmation"
+               required="required"
+               class="form-control"
+               placeholder="Confirm Password"/>
       </label>
-      <button class="button button-full button-positive" ng-click="signup()">Submit</button>
+      <button class="button button-full button-positive"
+              ng-click="signup()">
+              Submit
+      </button>
     </div>
   </ion-content>
 </ion-view>
