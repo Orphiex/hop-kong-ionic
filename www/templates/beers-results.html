@@ -13,17 +13,20 @@
           </a>
           <div class="row">
             <div class="bars-buttons col text-center">
-              <button ng-hide="user"
+              <button ng-show="!loggedIn"
                       ui-sref="settings"
-                      class="button-small button button-assertive"
-                      ng-click="saveBeer()">
+                      class="button-small button button-assertive">
                       Login to save
               </button>
-              <button ng-show="user"
-                      ui-sref="bookmarks"
+              <button ng-show="loggedIn && !{{beer.is_bookmarked}}"
                       class="button button-small button-assertive"
-                      ng-click="">
+                      ng-click="addBookmark(beer.id)">
                       RememBEER me
+              </button>
+              <button ng-show="loggedIn && {{beer.is_bookmarked}}"
+                      class="button button-small button-assertive"
+                      ng-click="deleteBookmark(beer.user_bookmark[0].id)">
+                      BEERmarked
               </button>
             </div>
           </div>

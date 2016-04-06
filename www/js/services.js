@@ -82,20 +82,6 @@ angular.module('hopKongIonic')
   };
 })
 .service('BeerBkmkService', function($http){
-  this.getBeerBookmarks = function(data){
-    $http({
-      method: 'GET',
-      // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks",
-      params: data
-    }).then(function (resp) {
-      console.log(resp.data);
-      $scope.beers = resp.data;
-    }, function (resp) {
-      console.log(resp);
-    });
-  };
-
   this.addBeerBookmark = function(user_id, beer_id){
     var data = {user_id: user_id, beer_id: beer_id};
     $http({
@@ -104,28 +90,50 @@ angular.module('hopKongIonic')
       url: "http://localhost:3000/api/beer_bookmarks",
       params: data
     }).then(function(resp){
-      var data = {user_id: user_id};
-      getBookmarks(data);
+      console.log(resp);
     }, function(resp){
       console.log(resp);
     });
   };
 
-  this.removeBeerBookmark = function(user_id){
+  this.removeBeerBookmark = function(bkmk_id){
     $http({
       method: 'DELETE',
       // update for Heroku
-      url: "http://localhost:3000/api/beer_bookmarks/"+user_id,
+      url: "http://localhost:3000/api/beer_bookmarks/"+bkmk_id,
     }).then(function(resp){
-      var data = {user_id: user_id};
-      getBookmarks(data);
+      console.log(resp);
     }, function(resp){
       console.log(resp);
     });
   };
 })
 .service('VendorBkmkService', function(){
+  this.addVendorBookmark = function(user_id, vendor_id){
+    var data = {user_id: user_id, vendor_id: vendor_id};
+    $http({
+      method: 'POST',
+      // update for Heroku
+      url: "http://localhost:3000/api/vendor_bookmarks",
+      params: data
+    }).then(function(resp){
+      console.log(resp);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
 
+  this.removeVendorBookmark = function(bkmk_id){
+    $http({
+      method: 'DELETE',
+      // update for Heroku
+      url: "http://localhost:3000/api/vendor_bookmarks/"+bkmk_id,
+    }).then(function(resp){
+      console.log(resp);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
 });
 
 // also need to update localhost in bars_results_controller and beers_results_controller

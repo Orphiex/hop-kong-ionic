@@ -1,6 +1,5 @@
 angular.module('hopKongIonic')
 
-
 .controller('VendorsListCtrl', ['$scope', '$http', '$auth', '$stateParams', '$cordovaGeolocation', 'DistanceCalc', 'VendorsListResource', function($scope, $http, $auth, $stateParams, $cordovaGeolocation, DistanceCalc, VendorsListResource){
 
   var options = {timeout: 5000, enableHighAccuracy: true};

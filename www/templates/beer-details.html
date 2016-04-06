@@ -48,13 +48,20 @@
                   class="button-small button button-energized">
                   Show Vendors
           </button>
-          <button ng-show="user"
-                  class="button-small button button-assertive">RememBEER me
-          </button>
-          <button ng-hide="user"
+          <button ng-show="!loggedIn"
                   ui-sref="settings"
                   class="button-small button button-assertive">
                   Login to save
+          </button>
+          <button ng-show="loggedIn && !beer.is_bookmarked"
+                  class="button button-small button-assertive"
+                  ng-click="addBookmark(beer.id)">
+                  RememBEER me
+          </button>
+          <button ng-show="loggedIn && beer.is_bookmarked"
+                  class="button button-small button-assertive"
+                  ng-click="deleteBookmark(beer.user_bookmark[0].id)">
+                  BEERmarked
           </button>
         </div>
       </div>
