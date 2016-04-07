@@ -1,0 +1,48 @@
+<ion-view view-title="Bars Results" id="bars-results">
+  <ion-content class="padding">
+    <div class="list card"
+         ng-repeat="vendor in vendors">
+      <div class="item item-body">
+        <div>
+          <a class="item item-thumbnail-left"
+             ui-sref="vendor-details({vendor_id: vendor.id})">
+            <img class="bars-results-image"
+                 src="{{vendor.image_url}}">
+            <h2>{{vendor.name}}</h2>
+            <p>{{vendor.district}}</p>
+            <p>Distance: {{vendor.distance}} km</p>
+          </a>
+          <!-- NOT WORKING SO REMOVED TEMPORARILY
+          <div class="row">
+            <div class="bars-buttons col text-center">
+              <button ng-show="!loggedIn"
+                      ui-sref="settings"
+                      class="button-small button button-assertive">
+                      Login to save
+              </button>
+              <button ng-show="loggedIn && !bar.is_bookmarked"
+                      class="button button-small button-assertive"
+                      ng-click="addBookmark(bar.id)">
+                      RememBEER me
+              </button>
+              <button ng-show="loggedIn && bar.is_bookmarked"
+                      class="button button-small button-assertive"
+                      ng-click="deleteBookmark(bar.user_bookmark[0].id)">
+                      BEERmarked
+              </button>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <ion-infinite-scroll
+      ng-if="canWeLoadMoreContent()"
+      on-infinite="populateList()"
+      distance="1%">
+    </ion-infinite-scroll> -->
+
+  </ion-content>
+</ion-view>
+

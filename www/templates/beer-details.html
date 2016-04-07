@@ -1,0 +1,68 @@
+<ion-view view-title="Beer Details" id="beer-details">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-body">
+        <div>
+          <span id="beer-name"> {{beer.name}} </span><br>
+          <span id="beer-image">
+            <img src="{{beer.brewery_image}}">
+          </span><br>
+          Brewery: {{beer.brewery}}<br>
+          Style: {{beer.simpstyle}}<br>
+          ABV: {{beer.abv}}%<br>
+          <img src={{beer.country_image}}><br>
+          <!--
+          <div class="row">
+          <a class="icon col"
+             ng-show="vendor.website_url !== ''"
+             ng-click="toBrowser(vendor.website_url)">
+             <img src="http://i.imgur.com/PYR4Gbx.png"
+                  alt="website">
+          </a>
+          <a class="icon col"
+             ng-show="vendor.facebook_url !== ''"
+             ng-click="toBrowser(vendor.facebook_url)">
+             <img src="http://i.imgur.com/6zsRPYd.png"
+                  alt="facebook">
+          </a>
+          <a class="icon col"
+             ng-show="vendor.twitter_url !== ''"
+             ng-click="toBrowser(vendor.twitter_url)">
+             <img src="http://i.imgur.com/RcPZbjs.png"
+                  alt="twitter">
+          </a>
+          <a class="icon col"
+             ng-show="vendor.instagram_url !== ''"
+             ng-click="toBrowser(vendor.instagram_url)">
+             <img src="http://i.imgur.com/TPn5AyI.png"
+                  alt="instagram">
+          </a>
+          -->
+          <!-- add authentication -->
+          </div>
+          <button ui-sref="vendors-list({beer_id: beer.id})"
+                  ui-sref-opts="{reload:true}"
+                  class="button button-energized">
+                  Show Vendors
+          </button>
+          <button ng-show="!loggedIn"
+                  ui-sref="settings"
+                  class="button button-assertive">
+                  Login to save
+          </button>
+          <button ng-show="loggedIn && !beer.is_bookmarked"
+                  class="button button-assertive"
+                  ng-click="addBookmark(beer.id)">
+                  RememBEER me
+          </button>
+          <button ng-show="loggedIn && beer.is_bookmarked"
+                  class="button button-royal"
+                  ng-click="deleteBookmark(beer.user_bookmark[0].id)">
+                  BEERmarked
+          </button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,60 @@
+<ion-view view-title="Bars" id="bars">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col text-center">
+        <button ui-sref="map"
+                id="nearest-bar-button"
+                class="button button-positive">
+                Just Find Nearest Bar
+        </button>
+      </div>
+    </div>
+    <p class="beer-geek-search">Geek Search </p>
+    <ion-list>
+      <div ng-repeat="(name, obj) in groups">
+        <ion-item class="item-stable"
+                  ng-click="toggleGroup(name)"
+                  ng-class="{active: isGroupShown(name)}">
+          <i class="icon"
+             ng-class="isGroupShown(name) ? 'ion-minus' : 'ion-plus'">
+          </i>
+          &nbsp;
+          {{name}}
+        </ion-item>
+        <div ng-if="obj.listStyle == 'Inline'"
+             class="item-accordion item"
+             ng-show="isGroupShown(name)">
+          <span ng-repeat="item in obj.list"
+                ng-click="selectItem(name, item)"
+                ng-class="{selected: isItemSelected(name, item), 'can-animate': isReady}">
+            {{item}}
+          </span>
+        </div>
+        <ion-item ng-if="obj.listStyle == 'Block'"
+                  class="item-accordion"
+                  ng-show="isGroupShown(name)"
+                  ng-repeat="item in obj.list"
+                  ng-click="selectItem(name, item)"
+                  ng-class="{selected: isItemSelected(name, item), 'can-animate': isReady}">
+          {{item}}
+        </ion-item>
+      </div>
+        <div class="row">
+          <div class="bars-buttons col text-center">
+            <button ui-sref="bars-results"
+                    ui-sref-opts="{reload:true}"
+                    class="button button-balanced">
+                    Submit
+            </button>
+            <button class="button button-assertive"
+                    ng-click="deselectAll()">
+                    Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
+
