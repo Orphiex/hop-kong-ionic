@@ -20,7 +20,7 @@ angular.module('hopKongIonic')
       $http({
         method: 'GET',
         // update for Heroku
-        url: "http://localhost:3000/api/beers_results.json",
+        url: "https://hop-kong-rails.herokuapp.com/api/beers_results.json",
         paramSerializer: '$httpParamSerializerJQLike',
         params: $localStorage.selectedBeerGroups
       }).then(function (resp) {
@@ -37,7 +37,7 @@ angular.module('hopKongIonic')
       $http({
         method: 'GET',
         // update for Heroku
-        url: "http://localhost:3000/api/beers_quicksearch.json",
+        url: "https://hop-kong-rails.herokuapp.com/api/beers_quicksearch.json",
         // paramSerializer: '$httpParamSerializerJQLike',
         params: data
       }).then(function (resp) {

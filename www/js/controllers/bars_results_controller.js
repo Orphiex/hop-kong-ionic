@@ -1,10 +1,11 @@
 angular.module('hopKongIonic')
 
 .controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http, $auth, $cordovaGeolocation, DistanceCalc, VendorBkmkService) {
+
   console.log($localStorage.selectedBarGroups);
 
   // $scope.list = [];
-  var options = {timeout: 5000, enableHighAccuracy: true};
+  var options = {timeout: 15000, enableHighAccuracy: true};
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
@@ -30,7 +31,7 @@ angular.module('hopKongIonic')
       $http({
         method: 'GET',
         // update for Heroku
-        url: "http://localhost:3000/api/bars_results.json",
+        url: "https://hop-kong-rails.herokuapp.com/api/bars_results.json",
         paramSerializer: '$httpParamSerializerJQLike',
         params: $localStorage.selectedBarGroups,
       }).then(function (resp) {
@@ -39,7 +40,7 @@ angular.module('hopKongIonic')
         $scope.vendors = distanceArray.sort(DistanceCalc.compare);
         //console.log($scope.list);
       }, function (resp) {
-        //console.log(resp);
+        console.log(resp);
       });
     };
 
@@ -66,6 +67,9 @@ angular.module('hopKongIonic')
       });
     };
 
+  }, function(error){
+    console.log(error);
+    console.log("Could not get location");
   });
 });
 

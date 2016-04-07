@@ -2,8 +2,10 @@ angular.module('hopKongIonic')
 
 .controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', 'DistanceCalc', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource, DistanceCalc) {
 
+  console.log("test");
+
   // Adds a time delay
-  var options = {timeout: 5000, enableHighAccuracy: true};
+  var options = {timeout: 15000, enableHighAccuracy: true};
 
   $scope.vendors = [];
 
@@ -29,10 +31,6 @@ angular.module('hopKongIonic')
     // var bounds  = new google.maps.LatLngBounds();
 
     // Gets bar data using the factory in services.js, then applies the distance and returns a sorted array.
-    AllBarsResource.query().$promise.then(function(resp){
-      var distanceArray = resp.map(addDistance);
-      $scope.vendors = distanceArray.sort(DistanceCalc.compare);
-    });
 
     // Applies a distance key and value to each set of bar data.
     function addDistance(bar){
@@ -43,7 +41,12 @@ angular.module('hopKongIonic')
     // Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
-      $scope.vendors.forEach(addMarker);
+      AllBarsResource.query().$promise.then(function(resp){
+        var distanceArray = resp.map(addDistance);
+        $scope.vendors = distanceArray.sort(DistanceCalc.compare);
+        $scope.vendors.forEach(addMarker);
+      });
+
 
       // ({
       //   icon: "https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2"
@@ -58,6 +61,7 @@ angular.module('hopKongIonic')
 
       function addMarker(location){
         // Applies new marker
+        console.log("test");
         var marker = new google.maps.Marker({
           map: $scope.map,
           animation: google.maps.Animation.DROP,
@@ -88,7 +92,8 @@ angular.module('hopKongIonic')
     // $scope.map.fitBounds(bounds);
     // $scope.map.panToBounds(bounds);
 
-  }, function(error){
+  }, function(error) {
+    console.log(error);
     console.log("Could not get location");
   });
 }]);

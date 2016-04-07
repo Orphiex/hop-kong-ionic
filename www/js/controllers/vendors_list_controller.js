@@ -2,7 +2,7 @@ angular.module('hopKongIonic')
 
 .controller('VendorsListCtrl', ['$scope', '$http', '$auth', '$stateParams', '$cordovaGeolocation', 'DistanceCalc', 'VendorsListResource', 'VendorDetailsResource', function($scope, $http, $auth, $stateParams, $cordovaGeolocation, DistanceCalc, VendorsListResource, VendorDetailsResource){
 
-  var options = {timeout: 5000, enableHighAccuracy: true};
+  var options = {timeout: 15000, enableHighAccuracy: true};
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
@@ -11,7 +11,7 @@ angular.module('hopKongIonic')
 
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/vendors_list.json",
+      url: "https://hop-kong-rails.herokuapp.com/api/vendors_list.json",
       params: {beer_id: $stateParams.beer_id}
     }).then(function(resp){
       var distanceArray = resp.data.map(addDistance);
