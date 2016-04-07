@@ -1,12 +1,9 @@
 angular.module('hopKongIonic')
 
-.controller('VendorDetailsCtrl', ['$scope', 'VendorDetailsResource', '$localStorage', '$http', '$stateParams', '$window', '$auth', function($scope, VendorDetailsResource, $localStorage, $http, $stateParams, $window, $auth) {
+.controller('VendorDetailsCtrl', ['$scope', 'VendorDetailsResource', '$localStorage', '$http', '$stateParams', '$window', '$auth', 'VendorBkmkService', function($scope, VendorDetailsResource, $localStorage, $http, $stateParams, $window, $auth, VendorBkmkService) {
 
   console.log($stateParams.vendor_id);
-  VendorDetailsResource.get({id: $stateParams.vendor_id}).$promise.then(function(response){
-    $scope.vendor = response;
-    console.log(response);
-  });
+
 
   // opens up social media icons in different window
   $scope.toBrowser = function (link) {
@@ -25,6 +22,27 @@ angular.module('hopKongIonic')
     console.log("Not Logged In");
     getResults();
   });
+
+  function getResults(){
+    VendorDetailsResource.get({id: $stateParams.vendor_id}).$promise.then(function(response){
+      $scope.vendor = response;
+      console.log(response);
+    });
+  }
+
+  // adds a bar bookmark
+  $scope.addBookmark = function(bar_id){
+    VendorBkmkService.addBarBookmark($scope.user.id, bar_id).then(function(){
+      getResults();
+    });
+  };
+
+  // adds a bar bookmark
+  $scope.deleteBookmark = function(bkmk_id){
+    VendorBkmkService.removeBarBookmark(bkmk_id).then(function(){
+      getResults();
+    });
+  };
 
 
 }]);

@@ -9,7 +9,6 @@
           </span><br>
           Address: {{vendor.street_address}},
           {{vendor.district}}<br>
-          Vendor Type: {{vendor_type.vendor_type}}<br>
           Phone: {{vendor.phone_number}}<br>
           Email: {{vendor.email}}<br>
           <!-- on-click="window.open('{{vendor.website_url}}', '_system', 'location=yes'); return false;" -->
@@ -47,16 +46,22 @@
           <button ui-sref="beers-list({vendor_id: vendor.id})"
                   ui-sref-opts="{reload:true}"
                   class="button button-energized">
-                  Show Beers Menu
+                  Show Beers
           </button>
-          <button ng-show="user"
-                  class="button button-assertive">
-                  RememBEER me
-          </button>
-          <button ng-hide="user"
+          <button ng-show="!loggedIn"
                   ui-sref="settings"
                   class="button button-assertive">
                   Login to save
+          </button>
+          <button ng-show="loggedIn && !bar.is_bookmarked"
+                  class="button button-assertive"
+                  ng-click="addBookmark(bar.id)">
+                  RememBEER me
+          </button>
+          <button ng-show="loggedIn && bar.is_bookmarked"
+                  class="button button-assertive"
+                  ng-click="deleteBookmark(bar.user_bookmark[0].id)">
+                  BEERmarked
           </button>
         </div>
       </div>
