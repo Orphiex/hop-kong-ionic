@@ -2,6 +2,8 @@ angular.module('hopKongIonic')
 
 .controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', 'DistanceCalc', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource, DistanceCalc) {
 
+  console.log("test");
+
   // Adds a time delay
   var options = {timeout: 15000, enableHighAccuracy: true};
 
@@ -88,7 +90,8 @@ angular.module('hopKongIonic')
     // $scope.map.fitBounds(bounds);
     // $scope.map.panToBounds(bounds);
 
-  }, function(error){
+  }, function(error) {
+    console.log(error);
     console.log("Could not get location");
   });
 }]);

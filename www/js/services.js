@@ -148,6 +148,3 @@ angular.module('hopKongIonic')
     });
   };
 });
-
-// also need to update localhost in bars_results_controller and beers_results_controller
-// http://localhost:3000

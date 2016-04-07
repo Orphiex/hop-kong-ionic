@@ -39,7 +39,7 @@ angular.module('hopKongIonic')
         $scope.vendors = distanceArray.sort(DistanceCalc.compare);
         //console.log($scope.list);
       }, function (resp) {
-        //console.log(resp);
+        console.log(resp);
       });
     };
 
@@ -66,6 +66,9 @@ angular.module('hopKongIonic')
       });
     };
 
+  }, function(error){
+    console.log(error);
+    console.log("Could not get location");
   });
 });
 
