@@ -1,6 +1,6 @@
 <ion-view view-title="Beer Menu" id="beers-list">
   <ion-content class="padding">
-    <h2 id="menu-vendor-name">Vendor Name {{$stateParams.vendor_id}}</h2>
+    <h2 id="menu-vendor-name">{{beers[0].vendor_name}} {{$stateParams.vendor_id}}</h2>
     <div class="list card"
          ng-repeat="beer in beers">
       <div class="item item-body">
