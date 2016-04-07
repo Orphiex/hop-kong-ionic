@@ -32,14 +32,4 @@ angular.module('hopKongIonic')
 
   getResults();
 
-  // $scope.addBookmark = function(beer_id){
-  //   BeerBkmkService.addBeerBookmark($scope.user.id, beer_id);
-  //   getResults();
-  // };
-
-  // $scope.deleteBookmark = function(bkmk_id){
-  //   BeerBkmkService.removeBeerBookmark(bkmk_id);
-  //   getResults();
-  // };
-
 }]);

@@ -58,6 +58,7 @@ angular.module('hopKongIonic')
       $scope.shownGroup = group;
     }
   };
+
   //
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
@@ -90,51 +91,49 @@ angular.module('hopKongIonic')
     delete $localStorage.selectedBeerGroups;
   };
 
-
   // Beer.pluck(:country).uniq
-  // Beer.pluck(:simpstyle).uniq
 
   //QUERIES
-  // this obtains unique locations (eg Central, Wan Chai)
+  // obtains unique locations (eg Central, Wan Chai)
   LocationResource.query().$promise.then(function(response){
     $scope.groups['HK Location'].list = response;
   });
 
-  // this obtains unique vendor types (eg Bar/Restaurant, Online Retail)
+  // obtains unique vendor types (eg Bar/Restaurant, Online Retail)
   VendorTypeResource.query().$promise.then(function(response){
     // console.log(response);
     $scope.groups['Vendor Type'].list = response;
   });
 
-  // this obtains unique countries for the beers (eg Hong Kong, USA)
+  // obtains unique countries for the beers (eg Hong Kong, USA)
   CountryResource.query().$promise.then(function(response){
-    //console.log(response);
     $scope.groups['Beer Country'].list = response;
   });
 
-  // this obtains the unique beer style names (eg Lager, IPA)
+  // obtains the unique beer style names (eg Lager, IPA)
   StyleResource.query().$promise.then(function(response){
     $scope.groups['Beer Style'].list = response;
   });
 
-  // this obtains unique beer brewery names (eg Anchor, Kona)
+  // obtains unique beer brewery names (eg Anchor, Kona)
   BreweryResource.query().$promise.then(function(response){
     $scope.groups['Brewery Name'].list = response;
   });
 
-  //this obtains all the beer names
+  // obtains all the beer names
   BeerResource.query().$promise.then(function(response){
-  //   console.log(response);
     $scope.beers = response;
     $scope.groups['Beer Name'].list = $scope.beers.map(function(beer) { return beer.name; });
   });
 
+  // quick search function
   $scope.quickSearch = function(searchValue){
     console.log(searchValue);
     $localStorage.quickSearch = searchValue;
     console.log($localStorage.quickSearch);
   };
 
+  // barcode function which only works using an actual phone
   $scope.scanBarcode = function(){
     $cordovaBarcodeScanner.scan().then(function(imageData) {
       console.log(imageData);

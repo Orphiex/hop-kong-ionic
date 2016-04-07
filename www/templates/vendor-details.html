@@ -53,14 +53,14 @@
                   class="button button-assertive">
                   Login to save
           </button>
-          <button ng-show="loggedIn && !bar.is_bookmarked"
+          <button ng-show="loggedIn && !vendor.is_bookmarked"
                   class="button button-assertive"
-                  ng-click="addBookmark(bar.id)">
+                  ng-click="addBookmark(vendor.id)">
                   RememBEER me
           </button>
-          <button ng-show="loggedIn && bar.is_bookmarked"
+          <button ng-show="loggedIn && vendor.is_bookmarked"
                   class="button button-assertive"
-                  ng-click="deleteBookmark(bar.user_bookmark[0].id)">
+                  ng-click="deleteBookmark(vendor.user_bookmark[0].id)">
                   BEERmarked
           </button>
         </div>

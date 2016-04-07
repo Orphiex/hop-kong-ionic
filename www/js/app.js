@@ -50,6 +50,7 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
     controller: 'LoginCtrl'
   }).state('beers', {
     url: '/beers',
+    cache: false,
     templateUrl: 'templates/beers.html',
     controller: 'BeersCtrl'
   }).state('beers-results', {
