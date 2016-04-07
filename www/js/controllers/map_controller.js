@@ -2,7 +2,7 @@ angular.module('hopKongIonic')
 
 .controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', 'DistanceCalc', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource, DistanceCalc) {
 
-  console.log("test");
+  // console.log("test");
 
   // Adds a time delay
   var options = {timeout: 15000, enableHighAccuracy: true};
@@ -32,8 +32,11 @@ angular.module('hopKongIonic')
 
     // Gets bar data using the factory in services.js, then applies the distance and returns a sorted array.
     AllBarsResource.query().$promise.then(function(resp){
+      // console.log(resp);
       var distanceArray = resp.map(addDistance);
+      // console.log(distanceArray);
       $scope.vendors = distanceArray.sort(DistanceCalc.compare);
+      // console.log($scope.vendors);
     });
 
     // Applies a distance key and value to each set of bar data.
@@ -60,6 +63,7 @@ angular.module('hopKongIonic')
 
       function addMarker(location){
         // Applies new marker
+        console.log("test");
         var marker = new google.maps.Marker({
           map: $scope.map,
           animation: google.maps.Animation.DROP,
