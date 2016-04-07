@@ -2,23 +2,21 @@ angular.module('hopKongIonic')
 
 
 .factory('BeerResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beers.json"); // need to update for Heroku but cannot just remove http://localhost:3000
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beers.json");
 }])
 .factory('StyleResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beer_styles.json"); // need to update for Heroku but cannot just remove http://localhost:3000
-}])
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beer_styles.json");}])
 .factory('BreweryResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beer_breweries.json"); // need to update for Heroku but cannot just remove http://localhost:3000
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beer_breweries.json");
 }])
 .factory('LocationResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beer_locations.json"); // need to update for Heroku but cannot just remove http://localhost:3000
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beer_locations.json");
 }])
 .factory('UserSession', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/user/auth/sign_in"); // need to update for Heroku but cannot just remove http://localhost:3000
+  return $resource("https://hop-kong-rails.herokuapp.com/user/auth/sign_in");
 }])
 .factory('BeersResultsResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beers_results.json");
-// need to update for Heroku but cannot just remove http://localhost:3000
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beers_results.json");
 }])
 .factory('LoggedIn', ['$http', function($http){
   return {
@@ -27,34 +25,34 @@ angular.module('hopKongIonic')
   };
 }])
 .factory('BarsResultsResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/bars_results.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/bars_results.json");
 }])
 .factory('VendorDetailsResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/vendors/:id.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/vendors/:id.json");
 }])
 .factory('VendorTypeResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/vendor_types.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/vendor_types.json");
 }])
 .factory('AllBarsResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/all_bars.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/all_bars.json");
 }])
 .factory('BarcodeResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/barcode.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/barcode.json");
 }])
 .factory('BeerBookmarksResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beer_bookmarks.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beer_bookmarks.json");
 }])
 .factory('VendorBookmarksResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/vendor_bookmarks.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/vendor_bookmarks.json");
 }])
 .factory('CountryResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beer_countries.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beer_countries.json");
 }])
 .factory('BeerDetailsResource', ['$resource', function($resource) {
-  return $resource("http://localhost:3000/api/beers/:id.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/beers/:id.json");
 }])
 .factory('VendorsListResource', ['$resource', function($resource){
-  return $resource("http://localhost:3000/api/vendors_list.json");
+  return $resource("https://hop-kong-rails.herokuapp.com/api/vendors_list.json");
 }])
 
 // Contains functions for calculating proximity
@@ -90,8 +88,7 @@ angular.module('hopKongIonic')
       var data = {user_id: user_id, beer_id: beer_id};
       $http({
         method: 'POST',
-        // update for Heroku
-        url: "http://localhost:3000/api/beer_bookmarks",
+        url: "https://hop-kong-rails.herokuapp.com/api/beer_bookmarks",
         params: data
       }).then(function(resp){
         console.log(resp);
@@ -106,8 +103,7 @@ angular.module('hopKongIonic')
     return $q(function(resolve,reject){
       $http({
         method: 'DELETE',
-        // update for Heroku
-        url: "http://localhost:3000/api/beer_bookmarks/"+bkmk_id,
+        url: "https://hop-kong-rails.herokuapp.com/api/beer_bookmarks/"+bkmk_id,
       }).then(function(resp){
         console.log(resp);
         resolve(resp);
@@ -125,8 +121,7 @@ angular.module('hopKongIonic')
       var data = {user_id: user_id, vendor_id: vendor_id};
       $http({
         method: 'POST',
-        // update for Heroku
-        url: "http://localhost:3000/api/vendor_bookmarks",
+        url: "https://hop-kong-rails.herokuapp.com/api/vendor_bookmarks",
         params: data
       }).then(function(resp){
         console.log(resp);
@@ -142,8 +137,7 @@ angular.module('hopKongIonic')
     return $q(function(resolve,reject){
       $http({
         method: 'DELETE',
-        // update for Heroku
-        url: "http://localhost:3000/api/vendor_bookmarks/"+bkmk_id,
+        url: "https://hop-kong-rails.herokuapp.com/api/vendor_bookmarks/"+bkmk_id,
       }).then(function(resp){
         console.log(resp);
         resolve(resp);

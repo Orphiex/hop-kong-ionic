@@ -105,7 +105,7 @@ angular.module('hopKongIonic', ['ionic', 'ngCordova', 'ngResource', 'ng-token-au
   $authProvider.configure([
     {
       default: {
-        apiUrl:                  'http://localhost:3000',
+        apiUrl:                  'https://hop-kong-rails.herokuapp.com',
         proxyIf:                 function() { window.isOldIE(); },
         storage:                 'localStorage'
       }

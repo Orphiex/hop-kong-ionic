@@ -30,7 +30,7 @@ angular.module('hopKongIonic')
       $http({
         method: 'GET',
         // update for Heroku
-        url: "http://localhost:3000/api/bars_results.json",
+        url: "https://hop-kong-rails.herokuapp.com/api/bars_results.json",
         paramSerializer: '$httpParamSerializerJQLike',
         params: $localStorage.selectedBarGroups,
       }).then(function (resp) {
