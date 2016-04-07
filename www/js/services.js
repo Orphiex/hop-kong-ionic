@@ -44,6 +44,9 @@ angular.module('hopKongIonic')
 .factory('BeerBookmarksResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beer_bookmarks.json");
 }])
+.factory('VendorBookmarksResource', ['$resource', function($resource) {
+  return $resource("http://localhost:3000/api/vendor_bookmarks.json");
+}])
 .factory('CountryResource', ['$resource', function($resource) {
   return $resource("http://localhost:3000/api/beer_countries.json");
 }])

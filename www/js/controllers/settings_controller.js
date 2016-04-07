@@ -3,8 +3,10 @@ angular.module('hopKongIonic')
 .controller('SettingsCtrl', ['$scope', '$auth', 'LoggedIn', function($scope, $auth, LoggedIn){
 
   $scope.logout = function () {
+    console.log(LoggedIn);
     $auth.signOut({config: 'user'}).then(function(resp) {
       console.log(resp);
+      LoggedIn.loggedIn = false;
     }).catch(function(resp) {
       console.log(resp);
     });
