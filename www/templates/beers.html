@@ -20,7 +20,7 @@
     </div>
 
     <ion-list>
-      <p class="beer-geek-search">Beer Geek Search</p>
+      <p class="beer-geek-search">Geek Search</p>
       <div ng-repeat="(name, obj) in groups">
         <ion-item class="item-stable"
                   ng-click="toggleGroup(name)"
@@ -48,23 +48,21 @@
           {{item}}
         </ion-item>
       </div>
-      <div class="beers-buttons">
-        <button ui-sref="beers-results"
-                ui-sref-opts="{reload:true}"
-                class="button button-balanced">
-                Submit
-        </button>
-        <button class="button button-assertive"
-                ng-click="deselectAll()">
-                Reset
-        </button>
-      <div>
     </ion-list>
-
-    <button class="button button-outline button-calm"
-            ng-click="scanBarcode()">
-            Scan Barcode
-    </button>
+    <div class="beers-buttons">
+      <button ui-sref="beers-results"
+              ui-sref-opts="{reload:true}"
+              class="button button-balanced">
+              Submit
+      </button>
+      <button class="button button-assertive"
+              ng-click="deselectAll()">
+              Reset
+      </button>
+      <button class="button button-calm"
+              ng-click="scanBarcode()">
+              Scan Barcode
+      </button>
 
   </ion-content>
 </ion-view>
