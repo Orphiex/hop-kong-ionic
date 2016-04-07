@@ -31,13 +31,6 @@ angular.module('hopKongIonic')
     // var bounds  = new google.maps.LatLngBounds();
 
     // Gets bar data using the factory in services.js, then applies the distance and returns a sorted array.
-    AllBarsResource.query().$promise.then(function(resp){
-      // console.log(resp);
-      var distanceArray = resp.map(addDistance);
-      // console.log(distanceArray);
-      $scope.vendors = distanceArray.sort(DistanceCalc.compare);
-      // console.log($scope.vendors);
-    });
 
     // Applies a distance key and value to each set of bar data.
     function addDistance(bar){
@@ -48,7 +41,12 @@ angular.module('hopKongIonic')
     // Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
-      $scope.vendors.forEach(addMarker);
+      AllBarsResource.query().$promise.then(function(resp){
+        var distanceArray = resp.map(addDistance);
+        $scope.vendors = distanceArray.sort(DistanceCalc.compare);
+        $scope.vendors.forEach(addMarker);
+      });
+
 
       // ({
       //   icon: "https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2"
