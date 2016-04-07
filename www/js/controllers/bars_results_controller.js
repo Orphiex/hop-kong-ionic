@@ -54,14 +54,14 @@ angular.module('hopKongIonic')
 
     // adds a bar bookmark
     $scope.addBookmark = function(bar_id){
-      BarBkmkService.addBarBookmark($scope.user.id, bar_id).then(function(){
+      VendorBkmkService.addVendorBookmark($scope.user.id, bar_id).then(function(){
         getResults();
       });
     };
 
     // adds a bar bookmark
     $scope.deleteBookmark = function(bkmk_id){
-      BarBkmkService.removeBarBookmark(bkmk_id).then(function(){
+      VendorBkmkService.removeVendorBookmark(bkmk_id).then(function(){
         getResults();
       });
     };

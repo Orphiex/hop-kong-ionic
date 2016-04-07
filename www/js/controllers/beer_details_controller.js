@@ -1,8 +1,19 @@
 angular.module('hopKongIonic')
 
-.controller('BeerDetailsCtrl', ['$scope', '$localStorage', '$http', '$stateParams', '$window', '$auth', 'BeerDetailsResource', 'BeerBkmkService', function($scope, $localStorage, $http, $stateParams, $window, $auth, BeerDetailsResource, BeerBkmkService) {
+.controller('BeerDetailsCtrl', ['$scope', '$localStorage', '$http', '$stateParams', '$window', '$auth', 'BeerDetailsResource', 'BeerBkmkService', '$rootScope', function($scope, $localStorage, $http, $stateParams, $window, $auth, BeerDetailsResource, BeerBkmkService, $rootScope) {
 
-  console.log($stateParams.beer_id);
+  $rootScope.$on('auth:login-success', function(ev, user) {
+    $scope.user = user;
+    $scope.loggedIn = user.signedIn;
+  });
+  $rootScope.$on('auth:registration-email-success', function(ev, user) {
+    $scope.user = user;
+    $scope.loggedIn = user.signedIn;
+  });
+  $rootScope.$on('auth:logout-success', function(ev) {
+    $scope.user = {id: 0};
+    $scope.loggedIn = false;
+  });
 
   // hides bookmark if user authenticated
   $auth.validateUser().then(function(resp){
@@ -18,7 +29,7 @@ angular.module('hopKongIonic')
   });
 
   function getResults(){
-    BeerDetailsResource.get({id: $stateParams.beer_id}).$promise.then(function(response){
+    BeerDetailsResource.get({id: $stateParams.beer_id, user_id: $scope.user.id}).$promise.then(function(response){
       $scope.beer = response;
       console.log(response);
     });

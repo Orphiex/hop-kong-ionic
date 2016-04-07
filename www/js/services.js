@@ -143,8 +143,10 @@ angular.module('hopKongIonic')
         url: "http://localhost:3000/api/vendor_bookmarks/"+bkmk_id,
       }).then(function(resp){
         console.log(resp);
+        resolve(resp);
       }, function(resp){
         console.log(resp);
+        reject(resp);
       });
     });
   };
