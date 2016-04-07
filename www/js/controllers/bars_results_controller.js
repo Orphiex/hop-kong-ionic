@@ -4,7 +4,7 @@ angular.module('hopKongIonic')
   console.log($localStorage.selectedBarGroups);
 
   // $scope.list = [];
-  var options = {timeout: 5000, enableHighAccuracy: true};
+  var options = {timeout: 15000, enableHighAccuracy: true};
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 

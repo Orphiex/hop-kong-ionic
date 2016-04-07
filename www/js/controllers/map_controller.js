@@ -3,7 +3,7 @@ angular.module('hopKongIonic')
 .controller('MapCtrl', ['$scope', /*'$state',*/ '$localStorage', '$cordovaGeolocation', 'LoggedIn', 'AllBarsResource', 'DistanceCalc', function($scope, /*$state,*/ $localStorage, $cordovaGeolocation, LoggedIn, AllBarsResource, DistanceCalc) {
 
   // Adds a time delay
-  var options = {timeout: 5000, enableHighAccuracy: true};
+  var options = {timeout: 15000, enableHighAccuracy: true};
 
   $scope.vendors = [];
 

@@ -20,7 +20,7 @@ angular.module('hopKongIonic')
     };
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/beers_list.json",
+      url: "https://hop-kong-rails.herokuapp.com/api/beers_list.json",
       params: data
     }).then(function(resp){
       console.log(resp);
