@@ -1,6 +1,7 @@
 angular.module('hopKongIonic')
 
 .controller('BarsResultsCtrl', function ($scope, BarsResultsResource, $localStorage, $http, $auth, $cordovaGeolocation, DistanceCalc, VendorBkmkService) {
+
   console.log($localStorage.selectedBarGroups);
 
   // $scope.list = [];
